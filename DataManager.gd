@@ -11,7 +11,7 @@ var fluffy_list = [ null, null, null ]
 
 var load_on_start = false
 
-#var version = load(res://version.gd).VERSION
+var version = load("res://version.gd").VERSION
 
 func _init():
 	pass
