@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://j8t1rj4ai1sb"]
+
+[ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_eounx"]
+[ext_resource type="Script" path="res://Disclamer.gd" id="1_gdk8c"]
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="2_y313w"]
+
+[sub_resource type="Theme" id="Theme_xnklm"]
+RichTextLabel/colors/default_color = Color(0.933333, 0.933333, 0.933333, 1)
+RichTextLabel/font_sizes/normal_font_size = 24
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gdk8c")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_eounx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -263.0
+offset_top = 17.0
+offset_right = 622.0
+offset_bottom = 681.0
+grow_horizontal = 2
+theme = SubResource("Theme_xnklm")
+text = "
+
+
+Some disclamer text
+don't play this game unless it's ok to play this game."
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -169.0
+offset_right = 207.0
+offset_bottom = -53.0
+grow_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_y313w")
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_y313w")
+text = "Quit"
+icon_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

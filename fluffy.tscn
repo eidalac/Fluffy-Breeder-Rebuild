@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://y7tr8l1obsp1"]
+
+[ext_resource type="Script" path="res://fluffy.gd" id="1_l5ada"]
+[ext_resource type="Texture2D" uid="uid://rku44h5xd82b" path="res://art/standardBody.png" id="2_hd0fl"]
+[ext_resource type="Texture2D" uid="uid://bnqta3kpryy8l" path="res://art/standardMouth.png" id="3_pdje5"]
+[ext_resource type="Texture2D" uid="uid://dco6rj2wc12qo" path="res://art/standardEyeWhite.png" id="4_86wst"]
+[ext_resource type="Texture2D" uid="uid://p7y0soki7tgp" path="res://art/standardEyes.png" id="5_6qteo"]
+[ext_resource type="Texture2D" uid="uid://csvi0b0ctnw1t" path="res://art/standardWings.png" id="6_d32wm"]
+[ext_resource type="Texture2D" uid="uid://7qcsilu7pa5c" path="res://art/standardEars.png" id="7_mmyev"]
+[ext_resource type="Texture2D" uid="uid://2oxwa7ejaors" path="res://art/standardLegs.png" id="8_4fhmi"]
+[ext_resource type="Texture2D" uid="uid://baoqm81c80ua3" path="res://art/standardMane.png" id="8_nna88"]
+[ext_resource type="Texture2D" uid="uid://c6tqwpaafhhd4" path="res://art/standardTail.png" id="9_rbntp"]
+[ext_resource type="Texture2D" uid="uid://tmklg4sbhkfy" path="res://art/standardHorn.png" id="10_nm5n0"]
+[ext_resource type="Texture2D" uid="uid://ctdg6lk2hqugf" path="res://art/standardTeats.png" id="12_0llgv"]
+
+[node name="Fluffy" type="Node2D" groups=["Persist"]]
+position = Vector2(647, 364)
+script = ExtResource("1_l5ada")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_hd0fl")
+hframes = 7
+frame = 5
+
+[node name="Mouth" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("3_pdje5")
+hframes = 7
+vframes = 4
+frame = 5
+
+[node name="Eyes" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("5_6qteo")
+hframes = 7
+vframes = 6
+frame = 5
+
+[node name="EyeWhites" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("4_86wst")
+hframes = 7
+frame = 5
+
+[node name="Mane" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("8_nna88")
+hframes = 7
+vframes = 2
+frame = 5
+
+[node name="Wings" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("6_d32wm")
+hframes = 7
+vframes = 2
+frame = 5
+
+[node name="Tail" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("9_rbntp")
+hframes = 7
+vframes = 2
+frame = 5
+
+[node name="Ears" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("7_mmyev")
+hframes = 7
+vframes = 4
+frame = 5
+
+[node name="Horn" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("10_nm5n0")
+hframes = 7
+vframes = 2
+frame = 5
+
+[node name="Legs2" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("8_4fhmi")
+hframes = 7
+vframes = 5
+frame = 33
+
+[node name="Teats" type="Sprite2D" parent="Sprites"]
+modulate = Color(1, 0.886275, 1, 1)
+texture = ExtResource("12_0llgv")
+hframes = 7
+vframes = 2
+frame = 12
+
+[node name="Legs" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("8_4fhmi")
+hframes = 7
+vframes = 5
+frame = 5

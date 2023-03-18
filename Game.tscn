@@ -1,0 +1,358 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtlwqhbvyrpha"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_7564a"]
+[ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_lx8qp"]
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="2_uubvc"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7564a")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = ExtResource("1_lx8qp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+flat = true
+
+[node name="Menu" type="PopupMenu" parent="MarginContainer/VBoxContainer/MenuBar"]
+size = Vector2i(157, 100)
+theme = ExtResource("2_uubvc")
+item_count = 4
+item_0/text = "          Save Game"
+item_0/id = 0
+item_1/text = "          Load Game"
+item_1/id = 1
+item_2/text = ""
+item_2/id = 2
+item_2/separator = true
+item_3/text = "          Exit Game"
+item_3/id = 3
+
+[node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MenuBar"]
+visible = false
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 49.0
+theme = ExtResource("2_uubvc")
+text = "Menu"
+flat = false
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MenuBar"]
+layout_mode = 0
+offset_left = 548.0
+offset_top = -4.0
+offset_right = 643.0
+offset_bottom = 27.0
+text = "Randomize"
+flat = true
+
+[node name="RandomParents" type="Button" parent="MarginContainer/VBoxContainer/MenuBar"]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 32.0
+offset_right = 1188.0
+offset_bottom = 63.0
+text = "Randomize Parents
+"
+flat = true
+
+[node name="GeneticGenerator" type="Button" parent="MarginContainer/VBoxContainer/MenuBar"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 32.0
+offset_right = 575.0
+offset_bottom = 63.0
+text = "Random Genome"
+
+[node name="GeneticGenerator2" type="Button" parent="MarginContainer/VBoxContainer/MenuBar"]
+layout_mode = 0
+offset_left = 614.0
+offset_top = 33.0
+offset_right = 765.0
+offset_bottom = 64.0
+text = "Breed From Parents
+"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SplitBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+visibility_layer = 256
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/SplitBox"]
+visibility_layer = 2
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/SplitBox"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/SplitBox"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/SplitBox"]
+light_mask = 4
+visibility_layer = 4
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Age"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Horn"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wings"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mood"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Legs"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Female"
+horizontal_alignment = 2
+
+[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cannibal"
+horizontal_alignment = 2
+
+[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shaved"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 8
+popup/item_0/text = "Age"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Chripy"
+popup/item_1/id = 1
+popup/item_2/text = "Talky"
+popup/item_2/id = 2
+popup/item_3/text = "Walky"
+popup/item_3/id = 3
+popup/item_4/text = "Foal"
+popup/item_4/id = 4
+popup/item_5/text = "Youth"
+popup/item_5/id = 5
+popup/item_6/text = "Adult"
+popup/item_6/id = 6
+popup/item_7/text = "Elderly"
+popup/item_7/id = 7
+
+[node name="OptionButton2" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="OptionButton3" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="Mood_Selection" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 23
+popup/item_0/text = "Happy"
+popup/item_0/id = 0
+popup/item_1/text = "Content"
+popup/item_1/id = 1
+popup/item_2/text = "Tired"
+popup/item_2/id = 2
+popup/item_3/text = "Playful"
+popup/item_3/id = 3
+popup/item_4/text = "Scheming"
+popup/item_4/id = 4
+popup/item_5/text = "Neutral"
+popup/item_5/id = 5
+popup/item_6/text = "Begging"
+popup/item_6/id = 6
+popup/item_7/text = "Confused"
+popup/item_7/id = 7
+popup/item_8/text = "Worried"
+popup/item_8/id = 8
+popup/item_9/text = "Grumpy"
+popup/item_9/id = 9
+popup/item_10/text = "Chastized"
+popup/item_10/id = 10
+popup/item_11/text = "Hopefull"
+popup/item_11/id = 11
+popup/item_12/text = "Unsure"
+popup/item_12/id = 12
+popup/item_13/text = "Scared"
+popup/item_13/id = 13
+popup/item_14/text = "Sad"
+popup/item_14/id = 14
+popup/item_15/text = "Definant"
+popup/item_15/id = 15
+popup/item_16/text = "Sinister"
+popup/item_16/id = 16
+popup/item_17/text = "Pridefull"
+popup/item_17/id = 17
+popup/item_18/text = "Liar"
+popup/item_18/id = 18
+popup/item_19/text = "Lost"
+popup/item_19/id = 19
+popup/item_20/text = "Punished"
+popup/item_20/id = 20
+popup/item_21/text = "Smarty"
+popup/item_21/id = 21
+popup/item_22/text = "Villian"
+popup/item_22/id = 22
+
+[node name="OptionButton5" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 4
+popup/item_0/text = "All Legs"
+popup/item_0/id = 0
+popup/item_1/text = "Huggy Friend"
+popup/item_1/id = 1
+popup/item_2/text = "Enf Friend"
+popup/item_2/id = 2
+popup/item_3/text = "Pillowed"
+popup/item_3/id = 3
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton2" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton3" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Coat"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Eye"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mane"
+
+[node name="PanelContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Body"
+color = Color(0.705882, 0.0784314, 0.117647, 1)
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mane"
+color = Color(0.215686, 0.392157, 0.796078, 1)
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Eyes"
+color = Color(0.258824, 0.352941, 0.12549, 1)
+
+[connection signal="id_pressed" from="MarginContainer/VBoxContainer/MenuBar/Menu" to="." method="_on_menu_id_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuBar/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuBar/RandomParents" to="." method="_on_random_parents_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuBar/GeneticGenerator" to="." method="_on_genetic_generator_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuBar/GeneticGenerator2" to="." method="_on_genetic_generator_2_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton2" to="." method="_on_option_button_2_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton3" to="." method="_on_option_button_3_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/Mood_Selection" to="." method="_on_mood_selection_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton5" to="." method="_on_option_button_5_item_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckButton2" to="." method="_on_check_button_2_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckButton3" to="." method="_on_check_button_3_toggled"]
+[connection signal="color_changed" from="MarginContainer/VBoxContainer/PanelContainer2/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="color_changed" from="MarginContainer/VBoxContainer/PanelContainer2/ColorPickerButton2" to="." method="_on_color_picker_button_2_color_changed"]
+[connection signal="color_changed" from="MarginContainer/VBoxContainer/PanelContainer2/ColorPickerButton3" to="." method="_on_color_picker_button_3_color_changed"]
