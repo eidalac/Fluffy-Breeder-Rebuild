@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://4tjlflb382tw"]
+[gd_scene load_steps=5 format=3 uid="uid://4tjlflb382tw"]
 
 [ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_2msvk"]
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_tq1bm"]
 [ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="2_r4smx"]
+[ext_resource type="PackedScene" uid="uid://bxuyf17ctmkqj" path="res://Title.tscn" id="3_2e7fs"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -21,6 +22,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_2msvk")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -6.0
+offset_right = 1280.0
+offset_bottom = 748.0
+
+[node name="HBoxContainer" parent="." instance=ExtResource("3_2e7fs")]
+layout_mode = 2
+offset_right = 1088.0
+offset_bottom = 257.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,11 +55,12 @@ text = "Load Game"
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_r4smx")
-text = "Start"
+text = "New Game"
 
 [node name="OptionButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_r4smx")
+disabled = true
 text = "Options"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
@@ -54,11 +68,6 @@ layout_mode = 2
 theme = ExtResource("2_r4smx")
 text = "Quit
 "
-
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

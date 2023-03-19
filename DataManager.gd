@@ -11,8 +11,12 @@ var fluffy_list = [ null, null, null ]
 
 var load_on_start = false
 
-var version = load("res://version.gd").VERSION
+var save_game_version = ""
 
+func _ready():
+	save_game_version = "v%s" % load("res://version.gd").VERSION
+	return
+	
 func _init():
 	pass
 
@@ -29,34 +33,49 @@ func load_game_data():
 	# project, so take care with this step.
 	# For our example, we will accomplish this by deleting saveable objects.
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		i.queue_free()
-
 	var save_file = FileAccess.open(SAVE_FILE_DIRECTORY+SAVE_FILE_NAME, FileAccess.READ)
 	
 	if (save_file == null):
-		print("Failed to open save file '%s'." % SAVE_FILE_DIRECTORY+SAVE_FILE_NAME)
+		print("Failed to open save file '%s'." % SAVE_FILE_NAME)
 		return
 	
 	game_data_dictionary = save_file.get_var()
 	
+	if (not game_data_dictionary.has("Version")):
+		print("Save file '%s' has no version number." % SAVE_FILE_NAME)
+		#return
+	
+	elif (game_data_dictionary["Version"] != save_game_version):
+		print("Save file '%s' version number does not match." % SAVE_FILE_NAME)
+		#return
+	
+	for i in save_nodes:
+		i.queue_free()
+	
 	for saved_key in game_data_dictionary:
-		var new_object = load(game_data_dictionary[saved_key]["filename"]).instantiate()
+		var new_object
+		
+		if (typeof(saved_key) == TYPE_STRING):
+			if (saved_key == "Version"):
+				continue
+		
+		new_object = load(game_data_dictionary[saved_key]["filename"]).instantiate()
 		get_node(game_data_dictionary[saved_key]["parent"]).add_child(new_object)
 		new_object.position = Vector2(game_data_dictionary[saved_key]["pos_x"], game_data_dictionary[saved_key]["pos_y"])
 		new_object.scale = Vector2(game_data_dictionary[saved_key]["scale"], game_data_dictionary[saved_key]["scale"])
 		new_object.my_genome = Genome.new(game_data_dictionary[saved_key]["genome"])
 		
-		if (game_data_dictionary[saved_key]["name"] == "Child"):
-			fluffy_list[0] = new_object
-		elif (game_data_dictionary[saved_key]["name"] == "Mom"):
-			fluffy_list[1] = new_object
-		else:
-			fluffy_list[2] = new_object
+		if (game_data_dictionary[saved_key]["filename"] == "res://fluffy.tscn"):
+			if (game_data_dictionary[saved_key]["name"] == "Child"):
+				fluffy_list[0] = new_object
+			elif (game_data_dictionary[saved_key]["name"] == "Mom"):
+				fluffy_list[1] = new_object
+			else:
+				fluffy_list[2] = new_object
 
 		# Now we set the remaining variables.
 		for i in game_data_dictionary[saved_key].keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "scale" or i == "genome":
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "scale" or i == "genome" or i == "Version":
 				continue
 			new_object.set(i, game_data_dictionary[saved_key][i])
 	save_file.close()
@@ -64,7 +83,7 @@ func load_game_data():
 func save_game_data():
 	var save_file = FileAccess.open(SAVE_FILE_DIRECTORY+SAVE_FILE_NAME, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	var game_data_dictionary = {}
+	var game_data_dictionary = { "Version": save_game_version }
 	var key = 0;
 	
 	for node_to_save in save_nodes:

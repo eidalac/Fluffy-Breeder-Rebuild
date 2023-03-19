@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://j8t1rj4ai1sb"]
+[gd_scene load_steps=7 format=3 uid="uid://j8t1rj4ai1sb"]
 
 [ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_eounx"]
 [ext_resource type="Script" path="res://Disclamer.gd" id="1_gdk8c"]
 [ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="2_y313w"]
+[ext_resource type="FontFile" uid="uid://owg2qsddi04n" path="res://art/Crucial-Medium.otf" id="3_waiqb"]
+[ext_resource type="PackedScene" uid="uid://bxuyf17ctmkqj" path="res://Title.tscn" id="3_ycgxr"]
 
 [sub_resource type="Theme" id="Theme_xnklm"]
 RichTextLabel/colors/default_color = Color(0.933333, 0.933333, 0.933333, 1)
@@ -26,22 +28,49 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_eounx")
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -6.0
+offset_right = 1280.0
+offset_bottom = 748.0
+
+[node name="HBoxContainer" parent="." instance=ExtResource("3_ycgxr")]
+offset_right = 1088.0
+offset_bottom = 257.0
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -263.0
-offset_top = 17.0
-offset_right = 622.0
-offset_bottom = 681.0
+offset_left = -295.0
+offset_top = 320.0
+offset_right = 441.0
+offset_bottom = 469.0
 grow_horizontal = 2
 theme = SubResource("Theme_xnklm")
-text = "
+theme_override_fonts/normal_font = ExtResource("3_waiqb")
+text = "This is a pre alpha release.
 
+That means the game is missing content, is full of bugs, is imbalanced, and is generally in an incomplete state. "
+fit_content = true
 
-Some disclamer text
-don't play this game unless it's ok to play this game."
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color(1, 0.592157, 0.513726, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -296.0
+offset_top = 474.0
+offset_right = 440.0
+offset_bottom = 644.0
+grow_horizontal = 2
+theme = SubResource("Theme_xnklm")
+theme_override_fonts/normal_font = ExtResource("3_waiqb")
+theme_override_font_sizes/normal_font_size = 30
+text = "This is a text-based game that includes descriptions of fantastic animal abuse and other subjects not suitable for persons under the age of 18. This is a work of fiction; any resemblance to actual persons, places, or events is unintended."
 fit_content = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

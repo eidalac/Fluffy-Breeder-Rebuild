@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxuyf17ctmkqj"]
+
+[ext_resource type="Script" path="res://Title.gd" id="1_njt0u"]
+[ext_resource type="FontFile" uid="uid://b1pthslnakstj" path="res://art/DirtyBrush.ttf" id="1_tkeja"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 1078.0
+offset_bottom = 359.0
+rotation = 0.0174533
+script = ExtResource("1_njt0u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "F"
+autowrap_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "l"
+autowrap_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "u"
+autowrap_mode = 2
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "f"
+autowrap_mode = 2
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "f"
+autowrap_mode = 2
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "y"
+autowrap_mode = 2
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+autowrap_mode = 2
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "B"
+autowrap_mode = 2
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "r"
+autowrap_mode = 2
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "e"
+autowrap_mode = 2
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "e"
+autowrap_mode = 2
+
+[node name="RichTextLabel12" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "d"
+autowrap_mode = 2
+
+[node name="RichTextLabel13" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "e"
+autowrap_mode = 2
+
+[node name="RichTextLabel14" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_tkeja")
+theme_override_font_sizes/normal_font_size = 108
+text = "r"
+autowrap_mode = 2

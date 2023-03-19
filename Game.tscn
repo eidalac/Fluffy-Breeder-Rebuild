@@ -98,6 +98,14 @@ offset_bottom = 64.0
 text = "Breed From Parents
 "
 
+[node name="VersionLabel" type="Label" parent="MarginContainer/VBoxContainer/MenuBar"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 6.0
+offset_right = 168.0
+offset_bottom = 32.0
+text = "Version: "
+
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2

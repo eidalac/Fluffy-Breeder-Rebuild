@@ -4,6 +4,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	$MarginContainer/VBoxContainer/MenuBar/VersionLabel.text = "Version: " + SaveManager.save_game_version
+	
 	if (SaveManager.load_on_start):
 		SaveManager.load_game_data()
 	else:
