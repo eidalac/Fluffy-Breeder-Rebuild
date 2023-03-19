@@ -48,12 +48,10 @@ func _ready():
 	pass
 	
 func _init():
-	var temp = load("res://Genome.gd")
 	my_genome = Genome.new()
 	randomize_genome()
 
 func update_from_genome(force_gender = -1):
-	var ntc = name_that_color.new()
 	
 	if (force_gender == 0):
 		my_genome.genes["Gender"] = [1, 0]
@@ -85,7 +83,6 @@ func update_from_genome(force_gender = -1):
 		has_wings = true
 
 func randomize_genome(force_gender = -1):
-	var temp = load("res://Genome.gd")
 	my_genome = Genome.new()
 	update_from_genome(force_gender)
 
@@ -122,24 +119,19 @@ func _process(_delta):
 	var tailIndex = 0
 	var hornIndex = 0
 	var legIndex = 0
-	var teatIndex = 0
 	
 	match leg_status:
 		1: # huggy
 			legIndex += 1
-			teatIndex += 1
 			$Sprites/Legs2.visible = false
 		2: # enf
 			legIndex += 2
-			teatIndex += 1
 			$Sprites/Legs2.visible = false
 		3: # pillow
 			legIndex += 3
-			teatIndex += 1
 			$Sprites/Legs2.visible = false
 		_: # all legs, no change
 			legIndex += 0
-			teatIndex += 0
 			$Sprites/Legs2.visible = true
 		
 	$Sprites/Teats.visible = gender
@@ -271,7 +263,6 @@ func _process(_delta):
 		hornIndex += 1
 		maneIndex += 1
 	
-	teatIndex = 1
 	
 	$Sprites/Body.frame_coords = Vector2i(age, bodyIndex)
 	$Sprites/Mouth.frame_coords = Vector2i(age, mouthIndex)

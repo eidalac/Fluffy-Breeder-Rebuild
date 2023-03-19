@@ -1,0 +1,226 @@
+[gd_scene load_steps=6 format=3 uid="uid://u2jr8urubedv"]
+
+[ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_mrk7w"]
+[ext_resource type="Script" path="res://new_game.gd" id="1_ohl07"]
+[ext_resource type="PackedScene" uid="uid://bxuyf17ctmkqj" path="res://Title.tscn" id="2_sw51o"]
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="3_5ap4m"]
+[ext_resource type="ButtonGroup" uid="uid://cngffgswolh3a" path="res://difficulty_option_button_group.tres" id="5_ne55p"]
+
+[node name="New Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohl07")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_mrk7w")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -6.0
+offset_right = 1280.0
+offset_bottom = 748.0
+
+[node name="HBoxContainer" parent="." instance=ExtResource("2_sw51o")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 0.0
+offset_right = 1144.0
+offset_bottom = 275.0
+
+[node name="Difficulty" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -344.0
+offset_right = 256.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="SimpleButton" type="Button" parent="Difficulty"]
+layout_mode = 2
+theme = ExtResource("3_5ap4m")
+toggle_mode = true
+button_group = ExtResource("5_ne55p")
+text = "Simple"
+
+[node name="EasyButton" type="Button" parent="Difficulty"]
+layout_mode = 2
+theme = ExtResource("3_5ap4m")
+toggle_mode = true
+button_group = ExtResource("5_ne55p")
+text = "Easy
+"
+
+[node name="NormalButton" type="Button" parent="Difficulty"]
+layout_mode = 2
+theme = ExtResource("3_5ap4m")
+toggle_mode = true
+button_group = ExtResource("5_ne55p")
+text = "Normal"
+
+[node name="HardButton" type="Button" parent="Difficulty"]
+layout_mode = 2
+theme = ExtResource("3_5ap4m")
+toggle_mode = true
+button_group = ExtResource("5_ne55p")
+text = "Hard"
+
+[node name="Difficulty2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -344.0
+offset_right = 256.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="EconmyOption" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Great Economy"
+popup/item_0/id = 0
+popup/item_1/text = "Normal Economy"
+popup/item_1/id = 1
+popup/item_2/text = "Bad Economy"
+popup/item_2/id = 2
+
+[node name="AlicornOption1" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Common Alicorns"
+popup/item_0/id = 0
+popup/item_1/text = "Uncommon Alicorns"
+popup/item_1/id = 1
+popup/item_2/text = "Rare Alicorns"
+popup/item_2/id = 2
+
+[node name="AlicornOption2" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Tollerated Alicorns"
+popup/item_0/id = 0
+popup/item_1/text = "Feared Alicorns"
+popup/item_1/id = 1
+popup/item_2/text = "Hated Alicorns"
+popup/item_2/id = 2
+
+[node name="PoopyOption" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Rare Colorism"
+popup/item_0/id = 0
+popup/item_1/text = "Common Colorism"
+popup/item_1/id = 1
+popup/item_2/text = "Rampent Colorism"
+popup/item_2/id = 2
+
+[node name="SmartyOption" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+item_count = 4
+selected = 1
+popup/item_0/text = "Smarty Friends"
+popup/item_0/id = 0
+popup/item_1/text = "Normal Smarties"
+popup/item_1/id = 1
+popup/item_2/text = "Bad Smarties"
+popup/item_2/id = 2
+popup/item_3/text = "Hell Gremlins"
+popup/item_3/id = 4
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 2
+offset_left = 384.0
+offset_top = 640.0
+offset_right = 576.0
+offset_bottom = 668.0
+size_flags_horizontal = 3
+theme = ExtResource("3_5ap4m")
+text = "Continue
+"
+
+[node name="Advanced" type="Button" parent="."]
+layout_mode = 2
+offset_left = 640.0
+offset_top = 640.0
+offset_right = 832.0
+offset_bottom = 668.0
+size_flags_horizontal = 3
+theme = ExtResource("3_5ap4m")
+toggle_mode = true
+text = "Advanced
+"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 64.0
+offset_top = 640.0
+offset_right = 256.0
+offset_bottom = 668.0
+theme = ExtResource("3_5ap4m")
+text = "Quit
+"
+
+[node name="InfoTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 304.0
+offset_right = 304.0
+offset_bottom = 368.0
+theme_override_constants/line_separation = 3
+text = "Select a difficulty level for the game.
+Click on Advanced for more options."
+scroll_active = false
+
+[node name="OptionDetails" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 1152.0
+offset_bottom = 576.0
+theme_override_constants/line_separation = 3
+scroll_active = false
+
+[node name="OptionDetails2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 544.0
+offset_right = 1152.0
+offset_bottom = 576.0
+theme_override_constants/line_separation = 3
+scroll_active = false
+
+[connection signal="toggled" from="Difficulty/SimpleButton" to="." method="_on_simple_button_toggled"]
+[connection signal="toggled" from="Difficulty/EasyButton" to="." method="_on_easy_button_toggled"]
+[connection signal="toggled" from="Difficulty/NormalButton" to="." method="_on_normal_button_toggled"]
+[connection signal="toggled" from="Difficulty/HardButton" to="." method="_on_hard_button_toggled"]
+[connection signal="pressed" from="Difficulty2/EconmyOption" to="." method="_on_econmy_option_pressed"]
+[connection signal="pressed" from="Difficulty2/AlicornOption1" to="." method="_on_alicorn_option_1_pressed"]
+[connection signal="pressed" from="Difficulty2/AlicornOption2" to="." method="_on_alicorn_option_2_pressed"]
+[connection signal="pressed" from="Difficulty2/PoopyOption" to="." method="_on_poopy_option_pressed"]
+[connection signal="item_selected" from="Difficulty2/SmartyOption" to="." method="_on_smarty_option_item_selected"]
+[connection signal="pressed" from="Difficulty2/SmartyOption" to="." method="_on_smarty_option_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="toggled" from="Advanced" to="." method="_on_advanced_toggled"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

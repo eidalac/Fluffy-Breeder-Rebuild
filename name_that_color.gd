@@ -23,19 +23,13 @@ func name(color):
 		color = "#" + color.substr(1, 1) + color.substr(1, 1) + color.substr(2, 1) + color.substr(2, 1) + color.substr(3, 1) + color.substr(3, 1);
 	
 	var test_color = Color(color)
-	#var rgb = rgb(color)
 	var r = test_color.r8
 	var g = test_color.g8
 	var b = test_color.b8
-	# var hsl = hsl(color)
 	var h = int(round(test_color.h * 359))
 	var s = int(round(test_color.s * 100))
-	var l = int(round(test_color.get_luminance() * 100))
 	var v = int(round(test_color.v * 100))
-	var color_test_two = test_color.srgb_to_linear()
-	var test_l = int(round(color_test_two.get_luminance() * 100))
 	var ndf1 = 0
-	var ndf2 = 0
 	var ndf = 0
 	var cl = -1
 	var df = -1
@@ -49,7 +43,6 @@ func name(color):
 			return ["#" + COLOR_NAMES[i][0], COLOR_NAMES[i][1], shadergb(COLOR_NAMES[i][2]), COLOR_NAMES[i][2], true]
 		
 		ndf1 = pow(r - COLOR_NAMES[i][3], 2) + pow(g - COLOR_NAMES[i][4], 2) + pow(b - COLOR_NAMES[i][5], 2)
-		ndf2 = abs(pow(h - COLOR_NAMES[i][6], 2)) + pow(s - COLOR_NAMES[i][7], 2) + abs(pow(l - COLOR_NAMES[i][8], 2))
 		
 		dh = min(abs(h - COLOR_NAMES[i][6]), 360-abs(h - COLOR_NAMES[i][6])) / 180.0
 		ds = abs(s - COLOR_NAMES[i][7])
@@ -57,7 +50,6 @@ func name(color):
 		
 		ndf3 = (dh * dh) + (ds * ds) + (dv * dv)
 		
-		#ndf = ndf1 + (ndf2 * 2)
 		ndf = ndf1 + ndf3
 		
 		if (df < 0 || df > ndf):
@@ -73,8 +65,8 @@ func name(color):
 func hsl(color):
 	var test_color = Color(color)
 	
-	var min
-	var max
+	var min_range
+	var max_range
 	var delta
 	var h
 	var s
@@ -83,10 +75,10 @@ func hsl(color):
 	var g = test_color.g
 	var b = test_color.b
 	
-	min = min(r, min(g, b));
-	max = max(r, max(g, b));
-	delta = max - min;
-	l = (min + max) / 2;
+	min_range = min(r, min(g, b));
+	max_range = max(r, max(g, b));
+	delta = max_range - min_range;
+	l = (min_range + max_range) / 2;
 	s = 0;
 	if (l > 0 && l < 1):
 		if (l < 0.5):
@@ -96,16 +88,15 @@ func hsl(color):
 	
 	h = 0
 	if (delta > 0):
-		if (max == r && max != g):
+		if (max_range == r && max_range != g):
 			h += (g - b) / delta
-		if (max == g && max != b):
+		if (max_range == g && max_range != b):
 			h += (2 + (b - r) / delta)
-		if (max == b && max != r):
+		if (max_range == b && max_range != r):
 			h += (4 + (r - g) / delta);
 		h /= 6;
 		
 	return [int(h * 255), int(s * 255), int(l * 255)];
-	#return [test_color.h * 359, test_color.s * 100, test_color.get_luminance() * 100]
 
 func rgb(color):
 	var test_color = Color("#" + color)

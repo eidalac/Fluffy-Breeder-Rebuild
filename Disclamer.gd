@@ -4,12 +4,12 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$VBoxContainer/ContinueButton.grab_focus()
-	var size = get_viewport().get_visible_rect().size
+	var window_size = get_viewport().get_visible_rect().size
 	var base_fluffy = preload("res://fluffy.tscn")
 	var display_fluffy = base_fluffy.instantiate()
 
 	display_fluffy.scale = Vector2(0.6, 0.6)
-	display_fluffy.position = Vector2(size.x, 500)
+	display_fluffy.position = Vector2(window_size.x, 500)
 	display_fluffy.color_coat = Color("b4141e")
 	display_fluffy.color_eye = Color("3764cb")
 	display_fluffy.color_mane = Color("425a20")
@@ -21,7 +21,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 

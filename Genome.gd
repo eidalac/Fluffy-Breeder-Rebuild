@@ -77,7 +77,7 @@ func _cross_breed_genes(genome_one, genome_two):
 		if (gene == "Species"):
 			new_genome[gene] = parent_genome_array[0][gene]
 		else:
-			var check = genes[gene].size()
+
 			for allele in genes[gene].size():
 				if ((allele & 1) == 0):
 					rng.randomize()
@@ -132,7 +132,6 @@ func test_double_gene(gene_to_test):
 	var first_gene_both_dominant = bool(gene_to_test[0] & gene_to_test[1])
 	var second_gene_both_dominant = bool(gene_to_test[2] & gene_to_test[3])
 	
-	var first_gene_both_recesive = !bool(gene_to_test[0] | gene_to_test[1])
 	var second_gene_both_recesive = !bool(gene_to_test[2] | gene_to_test[3])
 
 	var result = -1
@@ -234,8 +233,6 @@ func breed_gene_index(gene_to_test):
 				#print("Breed Gene: ", genes["Breed"], " | Value: Alicorn")
 	return result
 
-func breed_gene_test(gene_to_test):
-	pass
 
 func get_breed_from_geneom():
 	var result = breed_gene_index(genes["Breed"])
@@ -378,5 +375,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

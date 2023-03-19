@@ -5,12 +5,17 @@ extends Control
 func _ready():
 	$VBoxContainer/LoadButton.disabled = not SaveManager.save_game_exists()
 	
-	var size = get_viewport().get_visible_rect().size
+	if (not $VBoxContainer/LoadButton.disabled):
+		$VBoxContainer/LoadButton.grab_focus()
+	else:
+		$VBoxContainer/StartButton.grab_focus()
+	
+	var window_size = get_viewport().get_visible_rect().size
 	var base_fluffy = preload("res://fluffy.tscn")
 	var display_fluffy = base_fluffy.instantiate()
 
 	display_fluffy.scale = Vector2(0.6, 0.6)
-	display_fluffy.position = Vector2(size.x, 500)
+	display_fluffy.position = Vector2(window_size.x, 500)
 	display_fluffy.color_coat = Color("b4141e")
 	display_fluffy.color_eye = Color("3764cb")
 	display_fluffy.color_mane = Color("425a20")
@@ -23,12 +28,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://Game.tscn")
+	get_tree().change_scene_to_file("res://new_game.tscn")
 
 
 func _on_option_button_pressed():

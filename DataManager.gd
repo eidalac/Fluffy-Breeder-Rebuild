@@ -83,8 +83,9 @@ func load_game_data():
 func save_game_data():
 	var save_file = FileAccess.open(SAVE_FILE_DIRECTORY+SAVE_FILE_NAME, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	var game_data_dictionary = { "Version": save_game_version }
 	var key = 0;
+	
+	game_data_dictionary = { "Version": save_game_version }
 	
 	for node_to_save in save_nodes:
 		node_to_save.save()

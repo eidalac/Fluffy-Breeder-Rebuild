@@ -36,8 +36,11 @@ offset_right = 1280.0
 offset_bottom = 748.0
 
 [node name="HBoxContainer" parent="." instance=ExtResource("3_ycgxr")]
-offset_right = 1088.0
-offset_bottom = 257.0
+layout_mode = 0
+offset_left = 194.0
+offset_top = 130.0
+offset_right = 1090.0
+offset_bottom = 259.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -78,10 +81,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 48.0
-offset_top = -169.0
-offset_right = 207.0
-offset_bottom = -53.0
+offset_left = 64.0
+offset_top = -272.0
+offset_right = 256.0
+offset_bottom = -144.0
 grow_vertical = 0
 theme_override_constants/separation = 40
 
