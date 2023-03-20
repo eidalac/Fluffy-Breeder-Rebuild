@@ -1,0 +1,205 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx1ddmor08cbx"]
+
+[ext_resource type="Script" path="res://NewStoreSetup.gd" id="1_adqlq"]
+[ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_qxc0b"]
+[ext_resource type="PackedScene" uid="uid://bxuyf17ctmkqj" path="res://Title.tscn" id="2_kjr78"]
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="3_p6mc4"]
+
+[node name="New Store Setup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_adqlq")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_qxc0b")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -6.0
+offset_right = 1280.0
+offset_bottom = 748.0
+
+[node name="HBoxContainer" parent="." instance=ExtResource("2_kjr78")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 64.0
+offset_right = 1211.0
+offset_bottom = 217.0
+
+[node name="InfoTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 264.0
+offset_right = 792.0
+offset_bottom = 328.0
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 24
+text = "Configure your new store"
+scroll_active = false
+
+[node name="OptionDetails" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 376.0
+offset_right = 1296.0
+offset_bottom = 408.0
+theme_override_constants/line_separation = 3
+scroll_active = false
+
+[node name="OptionDetails2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 416.0
+offset_right = 1296.0
+offset_bottom = 448.0
+theme_override_constants/line_separation = 3
+scroll_active = false
+
+[node name="OptionDetails3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 456.0
+offset_right = 1296.0
+offset_bottom = 488.0
+theme_override_constants/line_separation = 3
+scroll_active = false
+
+[node name="OptionDetails4" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 496.0
+offset_right = 1296.0
+offset_bottom = 528.0
+theme_override_constants/line_separation = 3
+text = "Fluffies will call you this"
+scroll_active = false
+
+[node name="Difficulty2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_top = -344.0
+offset_right = 512.0
+offset_bottom = -190.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Location" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+alignment = 1
+item_count = 4
+selected = 2
+popup/item_0/text = "Farm"
+popup/item_0/id = 0
+popup/item_1/text = "Rural"
+popup/item_1/id = 1
+popup/item_2/text = "Suburban"
+popup/item_2/id = 2
+popup/item_3/text = "Urban"
+popup/item_3/id = 3
+
+[node name="Size" type="OptionButton" parent="Difficulty2"]
+layout_mode = 2
+alignment = 1
+item_count = 4
+selected = 2
+popup/item_0/text = "Tiny"
+popup/item_0/id = 0
+popup/item_1/text = "Small"
+popup/item_1/id = 1
+popup/item_2/text = "Standard"
+popup/item_2/id = 2
+popup/item_3/text = "Huge"
+popup/item_3/id = 3
+
+[node name="LineEdit" type="LineEdit" parent="Difficulty2"]
+layout_mode = 2
+placeholder_text = "name"
+alignment = 1
+
+[node name="LineEdit2" type="LineEdit" parent="Difficulty2"]
+layout_mode = 2
+placeholder_text = "name"
+alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 376.0
+offset_right = 104.0
+offset_bottom = 410.0
+text = "What kind of area is your store in?"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 416.0
+offset_right = 104.0
+offset_bottom = 448.0
+text = "How large  of a buidling is your store?"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 456.0
+offset_right = 270.0
+offset_bottom = 488.0
+text = "What is the name of your store?"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 496.0
+offset_right = 177.0
+offset_bottom = 528.0
+text = "What is your name?"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 640.0
+offset_right = 576.0
+offset_bottom = 668.0
+size_flags_horizontal = 3
+theme = ExtResource("3_p6mc4")
+text = "Finished"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 640.0
+offset_right = 256.0
+offset_bottom = 668.0
+theme = ExtResource("3_p6mc4")
+text = "Back
+"
+
+[connection signal="item_selected" from="Difficulty2/Location" to="." method="_on_location_item_selected"]
+[connection signal="pressed" from="Difficulty2/Location" to="." method="_on_location_pressed"]
+[connection signal="item_focused" from="Difficulty2/Size" to="." method="_on_size_item_focused"]
+[connection signal="item_selected" from="Difficulty2/Size" to="." method="_on_size_item_selected"]
+[connection signal="text_submitted" from="Difficulty2/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Difficulty2/LineEdit2" to="." method="_on_line_edit_2_text_submitted"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

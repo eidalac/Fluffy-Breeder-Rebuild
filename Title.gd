@@ -21,6 +21,7 @@ func _ready():
 	$RichTextLabel14.modulate = Color(rng.randf_range(0, 1), rng.randf_range(0, 1), rng.randf_range(0, 1))
 	
 	position = Vector2(192, 128)
+	size = Vector2(896, 129)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

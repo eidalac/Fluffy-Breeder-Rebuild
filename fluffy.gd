@@ -48,8 +48,9 @@ func _ready():
 	pass
 	
 func _init():
-	my_genome = Genome.new()
-	randomize_genome()
+	if (my_genome == null):
+		my_genome = Genome.new()
+		randomize_genome()
 
 func update_from_genome(force_gender = -1):
 	

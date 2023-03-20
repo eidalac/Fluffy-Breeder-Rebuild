@@ -36,7 +36,7 @@ layout_mode = 0
 offset_left = 200.0
 offset_top = 0.0
 offset_right = 1144.0
-offset_bottom = 275.0
+offset_bottom = 250.0
 
 [node name="Difficulty" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -49,6 +49,13 @@ offset_right = 256.0
 offset_bottom = -24.0
 grow_vertical = 0
 theme_override_constants/separation = 10
+
+[node name="SandboxButton" type="Button" parent="Difficulty"]
+layout_mode = 2
+theme = ExtResource("3_5ap4m")
+toggle_mode = true
+button_group = ExtResource("5_ne55p")
+text = "Sandbox"
 
 [node name="SimpleButton" type="Button" parent="Difficulty"]
 layout_mode = 2
@@ -184,11 +191,12 @@ text = "Quit
 
 [node name="InfoTitle" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 304.0
-offset_right = 304.0
-offset_bottom = 368.0
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 960.0
+offset_bottom = 376.0
 theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 24
 text = "Select a difficulty level for the game.
 Click on Advanced for more options."
 scroll_active = false
@@ -196,7 +204,7 @@ scroll_active = false
 [node name="OptionDetails" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 384.0
-offset_top = 320.0
+offset_top = 384.0
 offset_right = 1152.0
 offset_bottom = 576.0
 theme_override_constants/line_separation = 3
@@ -211,6 +219,7 @@ offset_bottom = 576.0
 theme_override_constants/line_separation = 3
 scroll_active = false
 
+[connection signal="toggled" from="Difficulty/SandboxButton" to="." method="_on_sandbox_button_toggled"]
 [connection signal="toggled" from="Difficulty/SimpleButton" to="." method="_on_simple_button_toggled"]
 [connection signal="toggled" from="Difficulty/EasyButton" to="." method="_on_easy_button_toggled"]
 [connection signal="toggled" from="Difficulty/NormalButton" to="." method="_on_normal_button_toggled"]
