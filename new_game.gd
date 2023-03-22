@@ -18,6 +18,7 @@ func _on_sandbox_button_toggled(button_pressed):
 	$Continue.disabled = not button_pressed
 	$OptionDetails2.text = ""
 	
+	SaveManager.game_data_dictionary["Diffculty"]["Level"] = 0
 	$Difficulty2/EconmyOption.selected = 0
 	$Difficulty2/AlicornOption1.selected = 0
 	$Difficulty2/AlicornOption2.selected = 0
@@ -30,6 +31,7 @@ func _on_simple_button_toggled(button_pressed):
 	$Continue.disabled = not button_pressed
 	$OptionDetails2.text = ""
 	
+	SaveManager.game_data_dictionary["Diffculty"]["Level"] = 1
 	$Difficulty2/EconmyOption.selected = 0
 	$Difficulty2/AlicornOption1.selected = 0
 	$Difficulty2/AlicornOption2.selected = 0
@@ -43,6 +45,7 @@ func _on_easy_button_toggled(button_pressed):
 	$Continue.disabled = not button_pressed
 	$OptionDetails2.text = ""
 	
+	SaveManager.game_data_dictionary["Diffculty"]["Level"] = 2
 	$Difficulty2/EconmyOption.selected = 0
 	$Difficulty2/AlicornOption1.selected = 1
 	$Difficulty2/AlicornOption2.selected = 1
@@ -55,6 +58,7 @@ func _on_normal_button_toggled(button_pressed):
 	$Continue.disabled = not button_pressed
 	$OptionDetails2.text = ""
 	
+	SaveManager.game_data_dictionary["Diffculty"]["Level"] = 3
 	$Difficulty2/EconmyOption.selected = 1
 	$Difficulty2/AlicornOption1.selected = 1
 	$Difficulty2/AlicornOption2.selected = 1
@@ -67,6 +71,7 @@ func _on_hard_button_toggled(button_pressed):
 	$Continue.disabled = not button_pressed
 	$OptionDetails2.text = ""
 	
+	SaveManager.game_data_dictionary["Diffculty"]["Level"] = 4
 	$Difficulty2/EconmyOption.selected = 2
 	$Difficulty2/AlicornOption1.selected = 2
 	$Difficulty2/AlicornOption2.selected = 2
@@ -103,6 +108,7 @@ func _on_smarty_option_item_selected(index):
 
 func _on_continue_pressed():
 	var test = SaveManager.game_data_dictionary["Diffculty"]["Economy Level"]
+	
 	
 	SaveManager.game_data_dictionary["Diffculty"]["Economy Level"] = $Difficulty2/EconmyOption.selected
 	SaveManager.game_data_dictionary["Diffculty"]["Alicorn Rarity"] = $Difficulty2/AlicornOption1.selected

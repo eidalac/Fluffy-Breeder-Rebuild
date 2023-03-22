@@ -1,14 +1,14 @@
 extends Control
 
-
+var load_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	$MarginContainer/VBoxContainer/MenuBar/VersionLabel.text = "Version: " + SaveManager.game_data_dictionary["Version"]
 	
-	if (SaveManager.load_on_start):
-		SaveManager.load_game_data()
+	if (SaveManager.load_on_start >= 0):
+		SaveManager.load_game_data(SaveManager.load_on_start)
 	else:
 		SaveManager.preloaded_fluffy = preload("res://fluffy.tscn")
 		
@@ -42,6 +42,10 @@ func _ready():
 	
 	update_fluffy_one()
 	
+	load_menu = load("res://SaveSlots.tscn").instantiate()
+	$MarginContainer.add_child(load_menu)
+	load_menu.hide()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -155,10 +159,14 @@ func save():
 func _on_menu_id_pressed(id):
 	match id:
 		0:
-			SaveManager.save_game_data()
+			#SaveManager.save_game_data()
+			load_menu.access_mode = "Save"
+			load_menu.popup_centered()
 
 		1:
-			SaveManager.load_game_data()
+			#SaveManager.load_game_data()
+			load_menu.access_mode = "Load"
+			load_menu.popup_centered()
 			update_fluffy_one()
 
 		3:

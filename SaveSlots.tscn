@@ -1,0 +1,142 @@
+[gd_scene load_steps=4 format=3 uid="uid://46brfma0j532"]
+
+[ext_resource type="Script" path="res://SaveSlots.gd" id="1_drerg"]
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="1_f5m81"]
+[ext_resource type="ButtonGroup" uid="uid://26yp3j340b5t" path="res://save_slot_buttons.tres" id="3_whkhw"]
+
+[node name="ConfirmationDialog" type="ConfirmationDialog"]
+size = Vector2i(640, 320)
+visible = true
+dialog_hide_on_ok = false
+script = ExtResource("1_drerg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 271.0
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 294.0
+offset_bottom = 47.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button1" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 16.0
+offset_right = 598.0
+offset_bottom = 47.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button2" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 294.0
+offset_bottom = 95.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button3" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 64.0
+offset_right = 598.0
+offset_bottom = 95.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button4" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 112.0
+offset_right = 294.0
+offset_bottom = 143.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button5" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 112.0
+offset_right = 598.0
+offset_bottom = 143.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button6" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 160.0
+offset_right = 294.0
+offset_bottom = 191.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button7" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 160.0
+offset_right = 598.0
+offset_bottom = 191.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button8" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 208.0
+offset_right = 294.0
+offset_bottom = 239.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[node name="Button9" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 208.0
+offset_right = 598.0
+offset_bottom = 239.0
+theme = ExtResource("1_f5m81")
+toggle_mode = true
+button_group = ExtResource("3_whkhw")
+text = " Slot # - 00/00/00 : 12:00 PM "
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]
+[connection signal="toggled" from="ColorRect/Button" to="." method="_on_button_toggled"]
+[connection signal="toggled" from="ColorRect/Button1" to="." method="_on_button_1_toggled"]
+[connection signal="toggled" from="ColorRect/Button2" to="." method="_on_button_2_toggled"]
+[connection signal="toggled" from="ColorRect/Button3" to="." method="_on_button_3_toggled"]
+[connection signal="toggled" from="ColorRect/Button4" to="." method="_on_button_4_toggled"]
+[connection signal="toggled" from="ColorRect/Button5" to="." method="_on_button_5_toggled"]
+[connection signal="toggled" from="ColorRect/Button6" to="." method="_on_button_6_toggled"]
+[connection signal="toggled" from="ColorRect/Button7" to="." method="_on_button_7_toggled"]
+[connection signal="toggled" from="ColorRect/Button8" to="." method="_on_button_8_toggled"]
+[connection signal="toggled" from="ColorRect/Button9" to="." method="_on_button_9_toggled"]

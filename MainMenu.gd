@@ -1,5 +1,6 @@
 extends Control
 
+var load_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,8 +23,12 @@ func _ready():
 	display_fluffy.has_horn = true
 	display_fluffy.has_wings = true
 	display_fluffy.gender = false
-
+	
 	add_child(display_fluffy)
+	
+	load_menu = load("res://SaveSlots.tscn").instantiate()
+	$PanelContainer.add_child(load_menu)
+	load_menu.hide()
 
 
 
@@ -45,6 +50,8 @@ func _on_exit_button_pressed():
 
 
 func _on_load_button_pressed():
-	SaveManager.load_on_start = true
-	get_tree().change_scene_to_file("res://Game.tscn")
-	pass
+	load_menu.access_mode = "Load"
+	load_menu.popup_centered()
+
+
+

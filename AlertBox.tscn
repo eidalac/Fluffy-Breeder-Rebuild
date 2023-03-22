@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b14c2dejgtiij"]
+
+[node name="AcceptDialog" type="AcceptDialog"]
+initial_position = 1
+size = Vector2i(300, 100)
+visible = true
+unresizable = true
+dialog_text = "generic alert message"
