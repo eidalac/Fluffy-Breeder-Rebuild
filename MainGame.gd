@@ -8,14 +8,6 @@ func _ready():
 	if (SaveManager.load_on_start >= 0):
 		SaveManager.load_game_data(SaveManager.load_on_start)
 	
-	if (false):
-		SaveManager.spawn_new_active_fluffy()
-		SaveManager.spawn_new_active_fluffy()
-		SaveManager.spawn_new_active_fluffy()
-		SaveManager.spawn_new_active_fluffy()
-		SaveManager.spawn_new_active_fluffy()
-		SaveManager.spawn_new_active_fluffy()
-	
 	load_menu = load("res://SaveSlots.tscn").instantiate()
 	$CenterPanel.add_child(load_menu)
 	load_menu.hide()

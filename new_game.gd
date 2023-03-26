@@ -107,8 +107,6 @@ func _on_smarty_option_item_selected(index):
 		$OptionDetails2.modulate = Color("b4141e")
 
 func _on_continue_pressed():
-	var test = SaveManager.game_data_dictionary["Diffculty"]["Economy Level"]
-	
 	
 	SaveManager.game_data_dictionary["Diffculty"]["Economy Level"] = $Difficulty2/EconmyOption.selected
 	SaveManager.game_data_dictionary["Diffculty"]["Alicorn Rarity"] = $Difficulty2/AlicornOption1.selected
