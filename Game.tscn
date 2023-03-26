@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game.gd" id="1_7564a"]
 [ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_lx8qp"]
-[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="2_uubvc"]
+[ext_resource type="Theme" uid="uid://ysevjqm8wnox" path="res://Button_Small_Text.tres" id="3_dvxw4"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -41,7 +41,7 @@ flat = true
 
 [node name="Menu" type="PopupMenu" parent="MarginContainer/VBoxContainer/MenuBar"]
 size = Vector2i(157, 100)
-theme = ExtResource("2_uubvc")
+theme = ExtResource("3_dvxw4")
 item_count = 4
 item_0/text = "          Save Game"
 item_0/id = 0
@@ -58,7 +58,7 @@ visible = false
 layout_mode = 0
 offset_right = 121.0
 offset_bottom = 49.0
-theme = ExtResource("2_uubvc")
+theme = ExtResource("3_dvxw4")
 text = "Menu"
 flat = false
 

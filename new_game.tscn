@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_5ap4m")
 script = ExtResource("1_ohl07")
 
 [node name="Background" type="PanelContainer" parent="."]

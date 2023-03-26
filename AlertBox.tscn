@@ -4,5 +4,7 @@
 initial_position = 1
 size = Vector2i(300, 100)
 visible = true
+transient = false
 unresizable = true
+popup_window = true
 dialog_text = "generic alert message"

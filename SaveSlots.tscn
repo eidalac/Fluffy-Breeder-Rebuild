@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://46brfma0j532"]
 
 [ext_resource type="Script" path="res://SaveSlots.gd" id="1_drerg"]
-[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="1_f5m81"]
+[ext_resource type="Theme" uid="uid://ysevjqm8wnox" path="res://Button_Small_Text.tres" id="2_u7qjp"]
 [ext_resource type="ButtonGroup" uid="uid://26yp3j340b5t" path="res://save_slot_buttons.tres" id="3_whkhw"]
 
 [node name="ConfirmationDialog" type="ConfirmationDialog"]
-size = Vector2i(640, 320)
+size = Vector2i(640, 430)
 visible = true
 dialog_hide_on_ok = false
 script = ExtResource("1_drerg")
@@ -14,7 +14,7 @@ script = ExtResource("1_drerg")
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 632.0
-offset_bottom = 271.0
+offset_bottom = 381.0
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
@@ -23,110 +23,238 @@ layout_mode = 0
 offset_left = 24.0
 offset_top = 16.0
 offset_right = 294.0
-offset_bottom = 47.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 72.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
-text = " Slot # - 00/00/00 : 12:00 PM "
+text = " Slot #
+00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 72.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button1" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 328.0
 offset_top = 16.0
 offset_right = 598.0
-offset_bottom = 47.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 72.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
 text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label1" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 16.0
+offset_right = 328.0
+offset_bottom = 72.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button2" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 64.0
+offset_top = 88.0
 offset_right = 294.0
-offset_bottom = 95.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 144.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
-text = " Slot # - 00/00/00 : 12:00 PM "
+text = "Slot #
+00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label2" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 24.0
+offset_bottom = 144.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button3" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 328.0
-offset_top = 64.0
+offset_top = 88.0
 offset_right = 598.0
-offset_bottom = 95.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 144.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
 text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label3" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 88.0
+offset_right = 328.0
+offset_bottom = 144.0
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button4" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 112.0
+offset_top = 160.0
 offset_right = 294.0
-offset_bottom = 143.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 216.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
-text = " Slot # - 00/00/00 : 12:00 PM "
+text = "Slot #
+00/00/00 : 12:00 PM 
+"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label4" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 160.0
+offset_right = 24.0
+offset_bottom = 216.0
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button5" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 328.0
-offset_top = 112.0
+offset_top = 160.0
 offset_right = 598.0
-offset_bottom = 143.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 216.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
 text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label5" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 160.0
+offset_right = 328.0
+offset_bottom = 216.0
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button6" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 160.0
+offset_top = 232.0
 offset_right = 294.0
-offset_bottom = 191.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 288.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
-text = " Slot # - 00/00/00 : 12:00 PM "
+text = "Slot #
+00/00/00 : 12:00 PM 
+"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label6" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 232.0
+offset_right = 24.0
+offset_bottom = 288.0
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button7" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 328.0
-offset_top = 160.0
+offset_top = 232.0
 offset_right = 598.0
-offset_bottom = 191.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 288.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
 text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label7" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 232.0
+offset_right = 328.0
+offset_bottom = 288.0
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button8" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 208.0
+offset_top = 304.0
 offset_right = 294.0
-offset_bottom = 239.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 360.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
-text = " Slot # - 00/00/00 : 12:00 PM "
+text = "Slot #
+00/00/00 : 12:00 PM 
+"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label8" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 304.0
+offset_right = 24.0
+offset_bottom = 360.0
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button9" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 328.0
-offset_top = 208.0
+offset_top = 304.0
 offset_right = 598.0
-offset_bottom = 239.0
-theme = ExtResource("1_f5m81")
+offset_bottom = 360.0
+theme = ExtResource("2_u7qjp")
 toggle_mode = true
 button_group = ExtResource("3_whkhw")
 text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label9" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 304.0
+offset_right = 328.0
+offset_bottom = 360.0
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
 [connection signal="confirmed" from="." to="." method="_on_confirmed"]

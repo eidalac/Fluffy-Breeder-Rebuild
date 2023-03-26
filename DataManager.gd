@@ -48,12 +48,74 @@ func _ready():
 func _init():
 	game_data_dictionary = default_game_data_dictionary
 
+func spawn_new_active_fluffy():
+	preloaded_fluffy = preload("res://fluffy.tscn")
+	
+	game_data_dictionary["Active Fluffies"].append(preloaded_fluffy.instantiate())
+
 func save_game_exists(save_slot = 0):
 	var file_name = SAVE_FILE_DIRECTORY+SAVE_FILE_NAME
 	
 	file_name = file_name.replace(".save", String.num_int64(save_slot)+".save")
 	
 	return FileAccess.file_exists(file_name)
+
+func is_save_valid(save_slot = 0):
+	#return true 
+	if (get_game_file_time_info(save_slot) == -1):
+		return false
+	
+	var save_file_with_slot = SAVE_FILE_DIRECTORY+SAVE_FILE_NAME
+	
+	save_file_with_slot = save_file_with_slot.replace(".save", String.num_int64(save_slot)+".save")
+	
+	if not FileAccess.file_exists(save_file_with_slot):
+		return false
+	
+	var save_file = FileAccess.open(save_file_with_slot, FileAccess.READ)
+	
+	if (save_file == null):
+		print("Failed to open save file '%s'." % save_file_with_slot)
+		return false
+	
+	game_data_dictionary = save_file.get_var()
+	
+	if (not game_data_dictionary.has("Version")):
+		print("Save file '%s' has no version number." % save_file_with_slot)
+		return false
+	
+	if (game_data_dictionary["Version"] != "v%s" % load("res://version.gd").VERSION):
+		return false
+
+
+func get_game_file_name(save_slot = 0):
+	if (get_game_file_time_info(save_slot) == -1):
+		return "Empty"
+	
+	var save_file_with_slot = SAVE_FILE_DIRECTORY+SAVE_FILE_NAME
+	
+	save_file_with_slot = save_file_with_slot.replace(".save", String.num_int64(save_slot)+".save")
+	
+	if not FileAccess.file_exists(save_file_with_slot):
+		return "Empty"
+		
+	var save_file = FileAccess.open(save_file_with_slot, FileAccess.READ)
+	
+	if (save_file == null):
+		return "ERROR"
+	
+	var save_game_data_dictionary = save_file.get_var()
+	
+	if (save_game_data_dictionary == null):
+		return "ERROR"
+	
+	if (not save_game_data_dictionary.has("Store")):
+		return "ERROR"
+	
+	if (not save_game_data_dictionary["Store"].has("Name")):
+		return "ERROR"
+	
+	return save_game_data_dictionary["Store"]["Name"]
 
 func get_game_file_time_info(save_slot = 0):
 	var file_exists = false
@@ -62,7 +124,7 @@ func get_game_file_time_info(save_slot = 0):
 	file_name = file_name.replace(".save", String.num_int64(save_slot)+".save")
 	
 	if (not FileAccess.file_exists(file_name)):
-		return ""
+		return -1
 	
 	return FileAccess.get_modified_time(file_name)
 
@@ -109,7 +171,7 @@ func load_game_data(save_slot = 0):
 			elif (saved_key == "Active Fluffies"):
 				for active_fluffy in game_data_dictionary[saved_key].size():
 					new_object = load(game_data_dictionary[saved_key][active_fluffy]["filename"]).instantiate()
-					get_node(game_data_dictionary[saved_key][active_fluffy]["parent"]).add_child(new_object)
+					#get_node(game_data_dictionary[saved_key][active_fluffy]["parent"]).add_child(new_object)
 					new_object.position = Vector2(game_data_dictionary[saved_key][active_fluffy]["pos_x"], game_data_dictionary[saved_key][active_fluffy]["pos_y"])
 					new_object.scale = Vector2(game_data_dictionary[saved_key][active_fluffy]["scale"], game_data_dictionary[saved_key][active_fluffy]["scale"])
 					new_object.my_genome = Genome.new(game_data_dictionary[saved_key][active_fluffy]["genome"])
@@ -171,11 +233,12 @@ func save_game_data(save_slot = 0):
 		var saved_fluffy = null
 		
 		for active_fluffy_index in game_data_dictionary["Active Fluffies"].size():
-			saved_fluffy =  game_data_dictionary["Active Fluffies"][active_fluffy_index]
+			saved_fluffy = game_data_dictionary["Active Fluffies"][active_fluffy_index]
+			#saved_fluffy = load("res://fluffy.tscn").instantiate()
 			save_data_dictionary["Active Fluffies"].append(saved_fluffy.save())
 		
 		for active_fluffy_index in game_data_dictionary["Inactive Fluffies"].size():
-			saved_fluffy =  game_data_dictionary["Inactive Fluffies"][active_fluffy_index]
+			saved_fluffy = game_data_dictionary["Inactive Fluffies"][active_fluffy_index]
 			save_data_dictionary["Inactive Fluffies"].append(saved_fluffy.save())
 		
 		for active_fluffy_index in game_data_dictionary["Dead Fluffies"].size():

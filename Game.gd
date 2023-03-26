@@ -11,34 +11,33 @@ func _ready():
 		SaveManager.load_game_data(SaveManager.load_on_start)
 	else:
 		SaveManager.preloaded_fluffy = preload("res://fluffy.tscn")
-		
 		SaveManager.game_data_dictionary["Active Fluffies"].push_front(SaveManager.preloaded_fluffy.instantiate())
-		SaveManager.game_data_dictionary["Active Fluffies"][0].add_to_group("Persist")
-		SaveManager.game_data_dictionary["Active Fluffies"][0].scale = Vector2(0.6, 0.6)
-		SaveManager.game_data_dictionary["Active Fluffies"][0].position = Vector2(661, 233)
-		SaveManager.game_data_dictionary["Active Fluffies"][0].name = "Child"
-		
 		SaveManager.game_data_dictionary["Active Fluffies"].append(SaveManager.preloaded_fluffy.instantiate())
-		SaveManager.game_data_dictionary["Active Fluffies"][1].add_to_group("Persist")
-		SaveManager.game_data_dictionary["Active Fluffies"][1].scale = Vector2(0.3, 0.3)
-		SaveManager.game_data_dictionary["Active Fluffies"][1].position = Vector2(162, 101)
-		SaveManager.game_data_dictionary["Active Fluffies"][1].name = "Mom"
-		
 		SaveManager.game_data_dictionary["Active Fluffies"].append(SaveManager.preloaded_fluffy.instantiate())
-		SaveManager.game_data_dictionary["Active Fluffies"][2].add_to_group("Persist")
-		SaveManager.game_data_dictionary["Active Fluffies"][2].scale = Vector2(0.3, 0.3)
-		SaveManager.game_data_dictionary["Active Fluffies"][2].position = Vector2(173, 355)
-		SaveManager.game_data_dictionary["Active Fluffies"][2].name = "Dad"
-		
 		_on_random_parents_pressed()
-		
-		$MarginContainer/VBoxContainer/PanelContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][0])
-		$MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3/GridContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][1])
-		$MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3/GridContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][2])
-		
-		get_node("MarginContainer/VBoxContainer/HBoxContainer/OptionButton").select(6)
-		get_node("MarginContainer/VBoxContainer/HBoxContainer/Mood_Selection").select(0)
-		get_node("MarginContainer/VBoxContainer/HBoxContainer/OptionButton5").select(0)
+	
+	SaveManager.game_data_dictionary["Active Fluffies"][0].add_to_group("Persist")
+	SaveManager.game_data_dictionary["Active Fluffies"][0].scale = Vector2(0.6, 0.6)
+	SaveManager.game_data_dictionary["Active Fluffies"][0].position = Vector2(661, 233)
+	SaveManager.game_data_dictionary["Active Fluffies"][0].name = "Child"
+	
+	SaveManager.game_data_dictionary["Active Fluffies"][1].add_to_group("Persist")
+	SaveManager.game_data_dictionary["Active Fluffies"][1].scale = Vector2(0.3, 0.3)
+	SaveManager.game_data_dictionary["Active Fluffies"][1].position = Vector2(162, 101)
+	SaveManager.game_data_dictionary["Active Fluffies"][1].name = "Mom"
+	
+	SaveManager.game_data_dictionary["Active Fluffies"][2].add_to_group("Persist")
+	SaveManager.game_data_dictionary["Active Fluffies"][2].scale = Vector2(0.3, 0.3)
+	SaveManager.game_data_dictionary["Active Fluffies"][2].position = Vector2(173, 355)
+	SaveManager.game_data_dictionary["Active Fluffies"][2].name = "Dad"
+	
+	$MarginContainer/VBoxContainer/PanelContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][0])
+	$MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3/GridContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][1])
+	$MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3/GridContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][2])
+	
+	get_node("MarginContainer/VBoxContainer/HBoxContainer/OptionButton").select(6)
+	get_node("MarginContainer/VBoxContainer/HBoxContainer/Mood_Selection").select(0)
+	get_node("MarginContainer/VBoxContainer/HBoxContainer/OptionButton5").select(0)
 	
 	update_fluffy_one()
 	
@@ -167,7 +166,12 @@ func _on_menu_id_pressed(id):
 			#SaveManager.load_game_data()
 			load_menu.access_mode = "Load"
 			load_menu.popup_centered()
-			update_fluffy_one()
+			#update_fluffy_one()
+			
+			#$MarginContainer/VBoxContainer/PanelContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][0])
+			#$MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3/GridContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][1])
+			#$MarginContainer/VBoxContainer/PanelContainer/SplitBox/PanelContainer3/GridContainer.add_child(SaveManager.game_data_dictionary["Active Fluffies"][2])
+		
 
 		3:
 			get_tree().quit()

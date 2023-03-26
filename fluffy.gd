@@ -22,7 +22,7 @@ var my_genome = null
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
+		#"parent" : get_parent().get_path(),
 		"name" : name,
 		"pos_x" : position.x,
 		"pos_y" : position.y,
@@ -62,8 +62,8 @@ func update_from_genome(force_gender = -1):
 	gender = my_genome.get_gender_value_from_genome()
 	
 	color_coat = my_genome.get_coat_color_from_gennome()
-	color_mane = my_genome.get_eye_color_from_gennome()
-	color_eye = my_genome.get_mane_color_from_gennome()
+	color_mane = my_genome.get_mane_color_from_gennome()
+	color_eye = my_genome.get_eye_color_from_gennome()
 	
 	var breed = my_genome.get_breed_from_geneom()
 	
@@ -90,6 +90,9 @@ func randomize_genome(force_gender = -1):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	#	print("clicked")
+	
 	if (color_coat == null):
 		return
 	$Sprites/Body.modulate = color_coat
@@ -277,3 +280,58 @@ func _process(_delta):
 	$Sprites/Legs.frame_coords = Vector2i(age, legIndex)
 	$Sprites/Legs2.frame_coords = Vector2i(age, 4)
 	$Sprites/Teats.frame_coords = Vector2i(age, 1)
+
+
+
+
+func _on_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			print("Clicked")
+			
+			var ntc = name_that_color.new()
+			
+			$Popup/ItemList.clear()
+			$Popup/ItemList.add_item("Fluffy Data:", null, false)
+			
+			if (my_genome.get_gender_value_from_genome()):
+				$Popup/ItemList.add_item("Gender: Female")
+			else:
+				$Popup/ItemList.add_item("Gender: Male")
+			
+			$Popup/ItemList.add_item("Length: " + var_to_str(my_genome.get_length_value_from_genome()))
+			$Popup/ItemList.add_item("Height: " + var_to_str(my_genome.get_height_value_from_genome()))
+			$Popup/ItemList.add_item("Weight: " + var_to_str(my_genome.get_weight_value_from_genome()))
+			$Popup/ItemList.add_item("Max Age: " + var_to_str(my_genome.get_lifespan_value_from_genome()))
+			$Popup/ItemList.add_item("Fertility: " + var_to_str(my_genome.get_fertility_value_from_genome()))
+			$Popup/ItemList.add_item("Maturity: " + var_to_str(my_genome.get_maturity_value_from_genome()))
+			$Popup/ItemList.add_item("Coat Color: " + ntc.name(my_genome.get_coat_color_from_gennome())[1])
+			$Popup/ItemList.add_item("Eye Color: " + ntc.name(my_genome.get_eye_color_from_gennome())[1])
+			$Popup/ItemList.add_item("Mane Color: " + ntc.name(my_genome.get_mane_color_from_gennome())[1])
+			
+			var breed = my_genome.get_breed_from_geneom()
+			
+			if (breed == 0):
+				$Popup/ItemList.add_item("Breed: Earthy")
+			elif (breed == 1):
+				$Popup/ItemList.add_item("Breed: Pegasus")
+			elif (breed == 2):
+				$Popup/ItemList.add_item("Breed: Unicorn")
+			elif (breed == 3):
+				$Popup/ItemList.add_item("Breed:  Alicorn (certain)")
+			else:
+				$Popup/ItemList.add_item("Breed:  Alicorn (possible)")
+		
+			$Popup/ItemList.add_item("Strength: " + var_to_str(my_genome.get_strength_value_from_genome()))
+			$Popup/ItemList.add_item("Energy: " + var_to_str(my_genome.get_energy_value_from_genome()))
+			$Popup/ItemList.add_item("Charm: " + var_to_str(my_genome.get_charm_value_from_genome()))
+			$Popup/ItemList.add_item("Thinking: " + var_to_str(my_genome.get_thinking_value_from_genome()))
+			$Popup/ItemList.add_item("Learning: " + var_to_str(my_genome.get_learning_value_from_genome()))
+			$Popup/ItemList.add_item("Sub Species: " + var_to_str(my_genome.get_subspecies_from_genome()))
+			
+			$Popup/ItemList.add_item("Coat Length: " + var_to_str(my_genome.get_coat_length_value_from_genome()))
+			$Popup/ItemList.add_item("Coat Curl: " + var_to_str(my_genome.get_coat_curl_value_from_genome()))
+			$Popup/ItemList.add_item("Coat Density: " + var_to_str(my_genome.get_coat_density_value_from_genome()))
+			$Popup/ItemList.add_item("Inbreed: " + var_to_str(my_genome.get_inbreeding_value_from_genome()))
+		
+			$Popup.popup_centered()

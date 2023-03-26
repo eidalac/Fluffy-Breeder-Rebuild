@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://y7tr8l1obsp1"]
+[gd_scene load_steps=14 format=3 uid="uid://y7tr8l1obsp1"]
 
 [ext_resource type="Script" path="res://fluffy.gd" id="1_l5ada"]
 [ext_resource type="Texture2D" uid="uid://rku44h5xd82b" path="res://art/standardBody.png" id="2_hd0fl"]
@@ -13,9 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://tmklg4sbhkfy" path="res://art/standardHorn.png" id="10_nm5n0"]
 [ext_resource type="Texture2D" uid="uid://ctdg6lk2hqugf" path="res://art/standardTeats.png" id="12_0llgv"]
 
-[node name="Fluffy" type="Node2D" groups=["Persist"]]
-position = Vector2(647, 364)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1mqh"]
+size = Vector2(832, 768)
+
+[node name="Fluffy" type="Area2D" groups=["Persist"]]
+position = Vector2(648, 368)
 script = ExtResource("1_l5ada")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, 20)
+shape = SubResource("RectangleShape2D_n1mqh")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -89,3 +96,20 @@ texture = ExtResource("8_4fhmi")
 hframes = 7
 vframes = 5
 frame = 5
+
+[node name="Popup" type="Popup" parent="."]
+initial_position = 2
+size = Vector2i(500, 500)
+always_on_top = true
+min_size = Vector2i(100, 100)
+
+[node name="ItemList" type="ItemList" parent="Popup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 1
+item_0/text = "test"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

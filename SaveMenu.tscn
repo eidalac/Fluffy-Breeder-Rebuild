@@ -1,0 +1,250 @@
+[gd_scene load_steps=3 format=3 uid="uid://s5hrf5cxlfp1"]
+
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="1_46iqi"]
+[ext_resource type="ButtonGroup" uid="uid://26yp3j340b5t" path="res://save_slot_buttons.tres" id="2_mcnwp"]
+
+[node name="SaveMenu" type="ColorRect"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 381.0
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 294.0
+offset_bottom = 47.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = " Slot #
+00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 72.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 16.0
+offset_right = 598.0
+offset_bottom = 72.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 16.0
+offset_right = 328.0
+offset_bottom = 72.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = 294.0
+offset_bottom = 144.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = "Slot #
+00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 24.0
+offset_bottom = 144.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 88.0
+offset_right = 598.0
+offset_bottom = 144.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 88.0
+offset_right = 328.0
+offset_bottom = 144.0
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 160.0
+offset_right = 294.0
+offset_bottom = 216.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = "Slot #
+00/00/00 : 12:00 PM 
+"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 160.0
+offset_right = 24.0
+offset_bottom = 216.0
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 160.0
+offset_right = 598.0
+offset_bottom = 216.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 160.0
+offset_right = 328.0
+offset_bottom = 216.0
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 232.0
+offset_right = 294.0
+offset_bottom = 288.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = "Slot #
+00/00/00 : 12:00 PM 
+"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 232.0
+offset_right = 24.0
+offset_bottom = 288.0
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 232.0
+offset_right = 598.0
+offset_bottom = 288.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 232.0
+offset_right = 328.0
+offset_bottom = 288.0
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button8" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 304.0
+offset_right = 294.0
+offset_bottom = 360.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = "Slot #
+00/00/00 : 12:00 PM 
+"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 304.0
+offset_right = 24.0
+offset_bottom = 360.0
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button9" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 304.0
+offset_right = 598.0
+offset_bottom = 360.0
+theme = ExtResource("1_46iqi")
+toggle_mode = true
+button_group = ExtResource("2_mcnwp")
+text = " Slot # - 00/00/00 : 12:00 PM "
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 304.0
+offset_right = 328.0
+offset_bottom = 360.0
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1

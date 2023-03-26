@@ -50,22 +50,41 @@ func _on_about_to_popup():
 
 
 func get_time_format_string(index):
-	var file_time_dictionary
-	var format_string = "<slot>: MM/DD at HH:II"
-
-	if (SaveManager.save_game_exists(index)):
-		file_time_dictionary = Time.get_datetime_dict_from_unix_time(SaveManager.get_game_file_time_info(index))
-		format_string = format_string.replace("<slot>", String.num_int64(index))
-		format_string = format_string.replace("MM",  String.num_int64(file_time_dictionary["month"]))
-		format_string = format_string.replace("DD",  String.num_int64(file_time_dictionary["day"]))
-		format_string = format_string.replace("HH",  String.num_int64(file_time_dictionary["hour"]))
-		format_string = format_string.replace("DD",  String.num_int64(file_time_dictionary["day"]))
-		if (file_time_dictionary["minute"] < 10):
-			format_string = format_string.replace("II",  "0" + String.num_int64(file_time_dictionary["minute"]))
-		else:
-			format_string = format_string.replace("II",  String.num_int64(file_time_dictionary["minute"]))
+	if (not SaveManager.save_game_exists(index)):
+		return "Empty\n "
+	
+	var file_time_dictionary = Time.get_datetime_dict_from_unix_time(SaveManager.get_game_file_time_info(index))
+	#var system_time_dictionary = Time.get_datetime_dict_from_system()
+	var am_pm = " AM"
+	var system_time_zone_dictionary
+	var time_zone_hours
+	var format_string = "<slot> MM/DD at HH:II"
+	
+	system_time_zone_dictionary = Time.get_time_zone_from_system()
+	time_zone_hours = int (system_time_zone_dictionary["bias"] / 60)
+	file_time_dictionary = Time.get_datetime_dict_from_unix_time(SaveManager.get_game_file_time_info(index))
+	
+	var test_hour = file_time_dictionary["hour"] + time_zone_hours
+	
+	if (test_hour < 0):
+		file_time_dictionary["hour"] = 12 + test_hour
+		file_time_dictionary["day"] = file_time_dictionary["day"] - 1
+		am_pm = " PM"
 	else:
-		format_string = String.num_int64(index) + ": Empty"
+		file_time_dictionary["hour"] = test_hour
+	
+	if (file_time_dictionary["hour"] > 12):
+		file_time_dictionary["hour"] = file_time_dictionary["hour"] - 12
+	
+	format_string = format_string.replace("MM",  String.num_int64(file_time_dictionary["month"]))
+	format_string = format_string.replace("DD",  String.num_int64(file_time_dictionary["day"]))
+	format_string = format_string.replace("HH",  String.num_int64(file_time_dictionary["hour"]))
+	format_string = format_string.replace("DD",  String.num_int64(file_time_dictionary["day"]))
+	if (file_time_dictionary["minute"] < 10):
+		format_string = format_string.replace("II",  "0" + String.num_int64(file_time_dictionary["minute"]) + am_pm)
+	else:
+		format_string = format_string.replace("II",  String.num_int64(file_time_dictionary["minute"]) + am_pm)
+	format_string = format_string.replace("<slot>", SaveManager.get_game_file_name(index) + "\n")
 	
 	return format_string
 
@@ -76,14 +95,20 @@ func _process(_delta):
 	pass
 
 func _on_confirmed():
-	var pressed_button = $ColorRect/Button.button_group.get_pressed_button()
-	
 	if (slot_selected == -1):
 		return
 	
 	if (access_mode == "Load"):
-		SaveManager.load_on_start = slot_selected
-		get_tree().change_scene_to_file("res://Game.tscn")
+		if (SaveManager.is_save_valid(slot_selected)):
+			SaveManager.load_on_start = slot_selected
+			#get_tree().change_scene_to_file("res://Game.tscn")
+			get_tree().change_scene_to_file("res://MainGame.tscn")
+		else:
+			var notice_box = load("res://AlertBox.tscn").instantiate()
+			notice_box.dialog_text = "Save file '" + String.num_int64(slot_selected) + "' version is not supported in this build."
+			add_child(notice_box)
+			notice_box.popup_centered()
+			return
 	else:
 		SaveManager.save_game_data(slot_selected)
 	
@@ -178,5 +203,4 @@ func _on_button_9_toggled(button_pressed):
 	
 	slot_selected = -1
 	$ColorRect/Button9.button_pressed = 0
-
 
