@@ -1,6 +1,7 @@
 extends Control
 
 var load_menu
+var feral_window
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$StoreNameButton.text = SaveManager.game_data_dictionary["Store"]["Name"]
-	$StoreFluffiesButton.text = "Store Fluffies (" + String.num_int64(SaveManager.game_data_dictionary["Active Fluffies"].size()) + ")"
+	$LeftSideBar/NinePatchRect/StoreNameButton.text = SaveManager.game_data_dictionary["Store"]["Name"]
+	$LeftSideBar/NinePatchRect/StoreFluffiesButton.text = "Store Fluffies (" + String.num_int64(SaveManager.game_data_dictionary["Active Fluffies"].size()) + ")"
 	pass
 
 
@@ -49,3 +50,13 @@ func _on_save_button_pressed():
 func _on_load_button_pressed():
 	load_menu.access_mode = "Load"
 	load_menu.popup_centered()
+
+
+func _on_hunt_ferals_pressed():
+	feral_window = load("res://HuntFerals.tscn").instantiate()
+	$".".add_child(feral_window)
+	# load_menu.hide()
+
+
+func _on_button_3_toggled(button_pressed):
+	SaveManager.inspect_mode = button_pressed

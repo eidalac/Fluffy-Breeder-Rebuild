@@ -101,6 +101,13 @@ func get_gender_value_from_genome():
 		return true
 	return false
 
+func set_gender_gene(female = true):
+	if (female):
+		genes["Gender"] = [1, 1]
+		return
+	
+	genes["Gender"] = [1, 0]
+
 func get_length_value_from_genome():
 	var first_gene_has_at_least_one_dominant = bool(genes["Length"][0] | genes["Length"][1])
 	var second_gene_has_at_least_one_dominant = bool(genes["Length"][2] | genes["Length"][3])

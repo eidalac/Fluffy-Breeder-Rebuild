@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqekd1uyxe0ca"]
+[gd_scene load_steps=10 format=3 uid="uid://dqekd1uyxe0ca"]
 
 [ext_resource type="Script" path="res://MainGame.gd" id="1_rhoem"]
 [ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="2_3jxup"]
 [ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="3_ova8e"]
 [ext_resource type="Theme" uid="uid://dptkiwah7ldk8" path="res://Label.tres" id="4_cehlp"]
 [ext_resource type="StyleBox" uid="uid://if7axao1njws" path="res://rounded_dark.tres" id="4_cnrvy"]
+[ext_resource type="FontFile" uid="uid://bdy6ddiqy0t43" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="6_6cw8d"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="7_cfekc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxq5r"]
 bg_color = Color(0.215686, 0.215686, 0.215686, 1)
@@ -38,10 +40,68 @@ grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_3jxup")
 
 [node name="CenterPanel" type="PanelContainer" parent="."]
-modulate = Color(0, 1, 1, 1)
+self_modulate = Color(0.176471, 0.360784, 0.168627, 1)
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+
+[node name="GameMap" type="NinePatchRect" parent="CenterPanel"]
+light_mask = 0
+layout_mode = 2
+
+[node name="MapControls" type="NinePatchRect" parent="CenterPanel/GameMap"]
+light_mask = 0
+layout_mode = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 960.0
+offset_bottom = 656.0
+
+[node name="View Store" type="Button" parent="CenterPanel/GameMap/MapControls"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 264.0
+offset_right = 408.0
+offset_bottom = 304.0
+theme = ExtResource("3_ova8e")
+text = "View Store"
+
+[node name="Hunt Ferals" type="Button" parent="CenterPanel/GameMap/MapControls"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 136.0
+offset_right = 224.0
+offset_bottom = 176.0
+theme = ExtResource("3_ova8e")
+text = "Hunt Ferals"
+
+[node name="Fluffy Mart" type="Button" parent="CenterPanel/GameMap/MapControls"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 136.0
+offset_right = 600.0
+offset_bottom = 176.0
+theme = ExtResource("3_ova8e")
+text = "Fluffy Mart"
+
+[node name="Fluffy Breeder" type="Button" parent="CenterPanel/GameMap/MapControls"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 400.0
+offset_right = 608.0
+offset_bottom = 440.0
+theme = ExtResource("3_ova8e")
+text = "Fluffy Breeder"
+
+[node name="Store Upgrades" type="Button" parent="CenterPanel/GameMap/MapControls"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 400.0
+offset_right = 216.0
+offset_bottom = 440.0
+theme = ExtResource("3_ova8e")
+text = "Store Upgrades
+"
 
 [node name="LeftSideBar" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -51,27 +111,30 @@ offset_right = 200.0
 offset_bottom = 712.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxq5r")
 
-[node name="StoreNameButton" type="Button" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="LeftSideBar"]
 layout_mode = 2
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 192.0
-offset_bottom = 52.0
+
+[node name="StoreNameButton" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 44.0
 theme = ExtResource("3_ova8e")
 text = "Store Name"
 text_overrun_behavior = 3
 
-[node name="TimeLabel" type="Label" parent="."]
+[node name="TimeLabel" type="Label" parent="LeftSideBar/NinePatchRect"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 72.0
-offset_right = 192.0
-offset_bottom = 104.0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 176.0
+offset_bottom = 96.0
 theme = ExtResource("4_cehlp")
 text = "<Weekday>"
 horizontal_alignment = 1
 
-[node name="SubTimeLabel" type="Label" parent="TimeLabel"]
+[node name="SubTimeLabel" type="Label" parent="LeftSideBar/NinePatchRect/TimeLabel"]
 layout_mode = 0
 offset_top = 17.0
 offset_right = 168.0
@@ -82,180 +145,158 @@ text = "sub time"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sepperator" type="Label" parent="."]
+[node name="Sepperator" type="Label" parent="LeftSideBar/NinePatchRect"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 56.0
-offset_right = 403.0
-offset_bottom = 82.0
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 387.0
+offset_bottom = 74.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/normal = ExtResource("4_cnrvy")
 clip_text = true
 
-[node name="Sepperator2" type="Label" parent="."]
+[node name="Sepperator2" type="Label" parent="LeftSideBar/NinePatchRect"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 256.0
-offset_right = 406.0
-offset_bottom = 282.0
+offset_left = 40.0
+offset_top = 248.0
+offset_right = 390.0
+offset_bottom = 274.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/normal = ExtResource("4_cnrvy")
 clip_text = true
 
-[node name="Sepperator4" type="Label" parent="."]
+[node name="Sepperator4" type="Label" parent="LeftSideBar/NinePatchRect"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 376.0
-offset_right = 406.0
-offset_bottom = 402.0
+offset_left = 40.0
+offset_top = 368.0
+offset_right = 390.0
+offset_bottom = 394.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/normal = ExtResource("4_cnrvy")
 clip_text = true
 
-[node name="Sepperator3" type="Label" parent="."]
+[node name="Sepperator3" type="Label" parent="LeftSideBar/NinePatchRect"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 144.0
-offset_right = 406.0
-offset_bottom = 170.0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 390.0
+offset_bottom = 162.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/normal = ExtResource("4_cnrvy")
 clip_text = true
 
-[node name="Button3" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 120.0
-offset_right = 192.0
-offset_bottom = 137.0
+[node name="Button3" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 112.0
+offset_right = 176.0
+offset_bottom = 131.0
 theme = ExtResource("3_ova8e")
 text = "<cash>"
 
-[node name="Button4" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 160.0
-offset_right = 192.0
-offset_bottom = 179.0
+[node name="Button4" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 176.0
+offset_bottom = 171.0
 theme = ExtResource("3_ova8e")
 text = "<repuation>
 "
 
-[node name="Button9" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 304.0
-offset_right = 192.0
-offset_bottom = 321.0
+[node name="Button9" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 296.0
+offset_right = 176.0
+offset_bottom = 315.0
 theme = ExtResource("3_ova8e")
 text = "Mares
 "
 
-[node name="Button10" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 328.0
-offset_right = 192.0
-offset_bottom = 345.0
+[node name="Button10" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 320.0
+offset_right = 176.0
+offset_bottom = 339.0
 theme = ExtResource("3_ova8e")
 text = "Stallions
 "
 
-[node name="Button11" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 352.0
-offset_right = 192.0
-offset_bottom = 369.0
+[node name="Button11" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 344.0
+offset_right = 176.0
+offset_bottom = 363.0
 theme = ExtResource("3_ova8e")
 text = "Foal
 "
 
-[node name="Button6" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 184.0
-offset_right = 192.0
-offset_bottom = 201.0
+[node name="Button6" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 176.0
+offset_right = 176.0
+offset_bottom = 195.0
 theme = ExtResource("3_ova8e")
 text = "<experience>"
 
-[node name="Button7" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 208.0
-offset_right = 192.0
-offset_bottom = 225.0
+[node name="Button7" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 200.0
+offset_right = 176.0
+offset_bottom = 219.0
 theme = ExtResource("3_ova8e")
 text = "<hugbox>"
 
-[node name="Button8" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 232.0
-offset_right = 192.0
-offset_bottom = 249.0
+[node name="Button8" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 224.0
+offset_right = 176.0
+offset_bottom = 243.0
 theme = ExtResource("3_ova8e")
 text = "<abuse>"
 
-[node name="StoreFluffiesButton" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 272.0
-offset_right = 192.0
-offset_bottom = 296.0
+[node name="StoreFluffiesButton" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 264.0
+offset_right = 176.0
+offset_bottom = 288.0
 theme = ExtResource("3_ova8e")
 theme_override_font_sizes/font_size = 12
 text = "<store fluffies>"
 text_overrun_behavior = 2
 
-[node name="Label2" type="Label" parent="."]
+[node name="LoadButton" type="Button" parent="LeftSideBar/NinePatchRect"]
 layout_mode = 0
-offset_left = 1096.0
-offset_top = -104.0
-offset_right = 1236.0
-offset_bottom = -78.0
-text = "Fluffy information"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 43.0
-offset_top = -76.0
-offset_right = 179.0
-offset_bottom = -50.0
-text = "Menus/game info"
-
-[node name="Label3" type="Label" parent="."]
-layout_mode = 0
-offset_left = 483.0
-offset_top = -51.0
-offset_right = 619.0
-offset_bottom = -25.0
-text = "Gameplay area"
-
-[node name="Label4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 363.0
-offset_top = -156.0
-offset_right = 934.0
-offset_bottom = -92.0
-text = "Buttons for your shop, feral hunting, item shops etc. (ie some sort of map)
-changes based on what area you are in.
-"
-
-[node name="LoadButton" type="Button" parent="."]
-offset_left = 112.0
-offset_top = 648.0
-offset_right = 192.0
-offset_bottom = 667.0
+offset_left = 96.0
+offset_top = 640.0
+offset_right = 176.0
+offset_bottom = 659.0
 theme = ExtResource("3_ova8e")
 text = "Load
 "
 
-[node name="SaveButton" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 648.0
-offset_right = 104.0
-offset_bottom = 667.0
+[node name="SaveButton" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 640.0
+offset_right = 88.0
+offset_bottom = 659.0
 theme = ExtResource("3_ova8e")
 text = "Save"
 
-[node name="ExitButton" type="Button" parent="."]
-offset_left = 64.0
-offset_top = 685.0
-offset_right = 160.0
-offset_bottom = 704.0
+[node name="ExitButton" type="Button" parent="LeftSideBar/NinePatchRect"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 677.0
+offset_right = 144.0
+offset_bottom = 696.0
 theme = ExtResource("3_ova8e")
 text = "Exit"
 
@@ -276,7 +317,35 @@ vertical_scroll_mode = 2
 custom_minimum_size = Vector2(300, 900)
 layout_mode = 2
 
-[connection signal="pressed" from="StoreFluffiesButton" to="." method="_on_store_fluffies_button_pressed"]
-[connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
-[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="Button3" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1240.0
+offset_top = 8.0
+offset_right = 1272.0
+offset_bottom = 40.0
+tooltip_text = "Toggle Inspection Mode"
+theme = ExtResource("3_ova8e")
+toggle_mode = true
+
+[node name="FontAwesome" type="Label" parent="Button3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 23.0
+offset_bottom = 30.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("6_6cw8d")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_cfekc")
+icon_name = "eye"
+
+[connection signal="pressed" from="CenterPanel/GameMap/MapControls/Hunt Ferals" to="." method="_on_hunt_ferals_pressed"]
+[connection signal="pressed" from="LeftSideBar/NinePatchRect/StoreFluffiesButton" to="." method="_on_store_fluffies_button_pressed"]
+[connection signal="pressed" from="LeftSideBar/NinePatchRect/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="LeftSideBar/NinePatchRect/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="LeftSideBar/NinePatchRect/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Button3" to="." method="_on_button_3_toggled"]

@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Fluffy
 
+var fertility = 0
+
 var mood = 0
 var age = 5
 var leg_status = 0
@@ -18,11 +20,13 @@ var has_wings = true
 
 var my_genome = null 
 
+enum GENDER {MALE, FEMALE} 
 
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
 		#"parent" : get_parent().get_path(),
+		"fertility" : fertility,
 		"name" : name,
 		"pos_x" : position.x,
 		"pos_y" : position.y,
@@ -47,10 +51,18 @@ func save():
 func _ready():
 	pass
 	
-func _init():
+func init(force_gender = -1):
 	if (my_genome == null):
 		my_genome = Genome.new()
-		randomize_genome()
+		randomize_genome(force_gender)
+
+func new_from_parents(mother_fluffy, father_fluffy):
+	var my_father_genome = father_fluffy.my_genome
+	var my_mother_genome = mother_fluffy.my_genome
+	my_genome = Genome.new()
+	my_genome._cross_breed_genes(my_father_genome.genes, my_mother_genome.genes)
+	update_from_genome()
+
 
 func update_from_genome(force_gender = -1):
 	
@@ -66,6 +78,8 @@ func update_from_genome(force_gender = -1):
 	color_eye = my_genome.get_eye_color_from_gennome()
 	
 	var breed = my_genome.get_breed_from_geneom()
+	
+	fertility = my_genome.get_fertility_value_from_genome()
 	
 	if (breed == 0):
 		has_horn = false
@@ -87,6 +101,19 @@ func randomize_genome(force_gender = -1):
 	my_genome = Genome.new()
 	update_from_genome(force_gender)
 
+func get_fertility():
+	return fertility
+
+func get_fertility_string():
+	match fertility:
+		0,1: return "Sterile"
+		2: return "Barren"
+		3: return "Infertile"
+		4: return "Fertile"
+		5: return "Fertile"
+		6: return "Fruitful"
+		7: return "Potent"
+		_: return "Undefined"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -287,51 +314,23 @@ func _process(_delta):
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			print("Clicked")
 			
-			var ntc = name_that_color.new()
-			
-			$Popup/ItemList.clear()
-			$Popup/ItemList.add_item("Fluffy Data:", null, false)
-			
-			if (my_genome.get_gender_value_from_genome()):
-				$Popup/ItemList.add_item("Gender: Female")
+			#if (SaveManager.inspect_mode == false):
+			if ($CheckBox.button_pressed):
+				$CheckBox.button_pressed = false
+				$CheckBox.hide()
 			else:
-				$Popup/ItemList.add_item("Gender: Male")
-			
-			$Popup/ItemList.add_item("Length: " + var_to_str(my_genome.get_length_value_from_genome()))
-			$Popup/ItemList.add_item("Height: " + var_to_str(my_genome.get_height_value_from_genome()))
-			$Popup/ItemList.add_item("Weight: " + var_to_str(my_genome.get_weight_value_from_genome()))
-			$Popup/ItemList.add_item("Max Age: " + var_to_str(my_genome.get_lifespan_value_from_genome()))
-			$Popup/ItemList.add_item("Fertility: " + var_to_str(my_genome.get_fertility_value_from_genome()))
-			$Popup/ItemList.add_item("Maturity: " + var_to_str(my_genome.get_maturity_value_from_genome()))
-			$Popup/ItemList.add_item("Coat Color: " + ntc.name(my_genome.get_coat_color_from_gennome())[1])
-			$Popup/ItemList.add_item("Eye Color: " + ntc.name(my_genome.get_eye_color_from_gennome())[1])
-			$Popup/ItemList.add_item("Mane Color: " + ntc.name(my_genome.get_mane_color_from_gennome())[1])
-			
-			var breed = my_genome.get_breed_from_geneom()
-			
-			if (breed == 0):
-				$Popup/ItemList.add_item("Breed: Earthy")
-			elif (breed == 1):
-				$Popup/ItemList.add_item("Breed: Pegasus")
-			elif (breed == 2):
-				$Popup/ItemList.add_item("Breed: Unicorn")
-			elif (breed == 3):
-				$Popup/ItemList.add_item("Breed:  Alicorn (certain)")
-			else:
-				$Popup/ItemList.add_item("Breed:  Alicorn (possible)")
-		
-			$Popup/ItemList.add_item("Strength: " + var_to_str(my_genome.get_strength_value_from_genome()))
-			$Popup/ItemList.add_item("Energy: " + var_to_str(my_genome.get_energy_value_from_genome()))
-			$Popup/ItemList.add_item("Charm: " + var_to_str(my_genome.get_charm_value_from_genome()))
-			$Popup/ItemList.add_item("Thinking: " + var_to_str(my_genome.get_thinking_value_from_genome()))
-			$Popup/ItemList.add_item("Learning: " + var_to_str(my_genome.get_learning_value_from_genome()))
-			$Popup/ItemList.add_item("Sub Species: " + var_to_str(my_genome.get_subspecies_from_genome()))
-			
-			$Popup/ItemList.add_item("Coat Length: " + var_to_str(my_genome.get_coat_length_value_from_genome()))
-			$Popup/ItemList.add_item("Coat Curl: " + var_to_str(my_genome.get_coat_curl_value_from_genome()))
-			$Popup/ItemList.add_item("Coat Density: " + var_to_str(my_genome.get_coat_density_value_from_genome()))
-			$Popup/ItemList.add_item("Inbreed: " + var_to_str(my_genome.get_inbreeding_value_from_genome()))
-		
-			$Popup.popup_centered()
+				$CheckBox.show()
+				$CheckBox.button_pressed = true
+			return
+
+
+func _on_mouse_entered():
+	$CollisionShape2D/Label.visible = SaveManager.inspect_mode
+
+
+func _on_check_box_toggled(button_pressed):
+	if (button_pressed):
+		add_to_group("Selected")
+	else:
+		remove_from_group("Selected")

@@ -1,2 +1,2 @@
 extends RefCounted
-const VERSION: String = "117eba3711 1.0"
+const VERSION: String = "12513c7311 1.0"

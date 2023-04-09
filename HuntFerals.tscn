@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=3 uid="uid://crp7cac40uaeb"]
+
+[ext_resource type="Script" path="res://HuntFerals.gd" id="1_c5h2i"]
+[ext_resource type="StyleBox" uid="uid://cgun4fkvgk55p" path="res://Background.tres" id="1_tyo7a"]
+[ext_resource type="Theme" uid="uid://bojo6mnyoqia4" path="res://Button.tres" id="3_84lck"]
+[ext_resource type="FontFile" uid="uid://bdy6ddiqy0t43" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="4_sj2sr"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="5_xbgnc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_c5h2i")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_tyo7a")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 1092.0
+offset_bottom = 528.0
+theme_override_styles/panel = ExtResource("1_tyo7a")
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(900, 200)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 168.0
+offset_right = 1088.0
+offset_bottom = 320.0
+text = "Huting for ferals you find..."
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 544.0
+offset_right = 888.0
+offset_bottom = 563.0
+theme = ExtResource("3_84lck")
+text = "Close"
+
+[node name="Take" type="Button" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 544.0
+offset_right = 504.0
+offset_bottom = 563.0
+theme = ExtResource("3_84lck")
+disabled = true
+text = "Take Selected (0)"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 144.0
+offset_right = 1096.0
+offset_bottom = 168.0
+theme = ExtResource("3_84lck")
+text = "Spawn 1 Fluffy"
+
+[node name="OptionButton2" type="OptionButton" parent="Button"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 56.0
+size_flags_horizontal = 3
+item_count = 8
+selected = 1
+popup/item_0/text = "Age"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Chripy"
+popup/item_1/id = 1
+popup/item_2/text = "Talky"
+popup/item_2/id = 2
+popup/item_3/text = "Walky"
+popup/item_3/id = 3
+popup/item_4/text = "Foal"
+popup/item_4/id = 4
+popup/item_5/text = "Youth"
+popup/item_5/id = 5
+popup/item_6/text = "Adult"
+popup/item_6/id = 6
+popup/item_7/text = "Elderly"
+popup/item_7/id = 7
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 208.0
+offset_right = 1096.0
+offset_bottom = 232.0
+theme = ExtResource("3_84lck")
+text = "Spawn 1 family"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 133.0
+offset_right = 172.0
+offset_bottom = 165.0
+tooltip_text = "Toggle Inspection Mode"
+theme = ExtResource("3_84lck")
+toggle_mode = true
+
+[node name="FontAwesome" type="Label" parent="Button3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 25.0
+offset_bottom = 26.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("4_sj2sr")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_xbgnc")
+icon_name = "eye"
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Take" to="." method="_on_take_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="toggled" from="Button3" to="." method="_on_button_3_toggled"]

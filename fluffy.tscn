@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://y7tr8l1obsp1"]
+[gd_scene load_steps=15 format=3 uid="uid://y7tr8l1obsp1"]
 
 [ext_resource type="Script" path="res://fluffy.gd" id="1_l5ada"]
 [ext_resource type="Texture2D" uid="uid://rku44h5xd82b" path="res://art/standardBody.png" id="2_hd0fl"]
+[ext_resource type="Script" path="res://FluffyTooltip.gd" id="2_use5l"]
 [ext_resource type="Texture2D" uid="uid://bnqta3kpryy8l" path="res://art/standardMouth.png" id="3_pdje5"]
 [ext_resource type="Texture2D" uid="uid://dco6rj2wc12qo" path="res://art/standardEyeWhite.png" id="4_86wst"]
 [ext_resource type="Texture2D" uid="uid://p7y0soki7tgp" path="res://art/standardEyes.png" id="5_6qteo"]
@@ -14,15 +15,24 @@
 [ext_resource type="Texture2D" uid="uid://ctdg6lk2hqugf" path="res://art/standardTeats.png" id="12_0llgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1mqh"]
-size = Vector2(832, 768)
+size = Vector2(772, 715)
 
 [node name="Fluffy" type="Area2D" groups=["Persist"]]
 position = Vector2(648, 368)
 script = ExtResource("1_l5ada")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(25, 20)
+position = Vector2(2, 22.5)
 shape = SubResource("RectangleShape2D_n1mqh")
+
+[node name="Label" type="Label" parent="CollisionShape2D"]
+offset_left = -386.0
+offset_top = -350.5
+offset_right = 382.0
+offset_bottom = 353.5
+tooltip_text = "test"
+mouse_filter = 1
+script = ExtResource("2_use5l")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -97,19 +107,22 @@ hframes = 7
 vframes = 5
 frame = 5
 
-[node name="Popup" type="Popup" parent="."]
-initial_position = 2
-size = Vector2i(500, 500)
-always_on_top = true
-min_size = Vector2i(100, 100)
+[node name="CheckBox" type="CheckBox" parent="."]
+visible = false
+offset_left = 240.0
+offset_top = -336.0
+offset_right = 264.0
+offset_bottom = -312.0
+scale = Vector2(6, 6)
 
-[node name="ItemList" type="ItemList" parent="Popup"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-item_count = 1
-item_0/text = "test"
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 241.0
+offset_top = -210.0
+offset_right = 305.0
+offset_bottom = -179.0
+text = "inspect"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

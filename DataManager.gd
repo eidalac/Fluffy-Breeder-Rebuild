@@ -41,6 +41,7 @@ var default_game_data_dictionary = {
 var game_data_dictionary = {}
 var preloaded_fluffy
 var load_on_start = -1
+var inspect_mode = false
 
 func _ready():
 	game_data_dictionary = default_game_data_dictionary.duplicate(true)
@@ -49,9 +50,14 @@ func _init():
 	game_data_dictionary = default_game_data_dictionary.duplicate(true)
 
 func spawn_new_active_fluffy():
-	preloaded_fluffy = preload("res://fluffy.tscn")
-	
-	game_data_dictionary["Active Fluffies"].append(preloaded_fluffy.instantiate())
+	preloaded_fluffy = preload("res://fluffy.tscn").instantiate()
+	preloaded_fluffy.init()
+	game_data_dictionary["Active Fluffies"].append(preloaded_fluffy)
+
+func spawn_new_inactive_fluffy():
+	preloaded_fluffy = preload("res://fluffy.tscn").instantiate()
+	preloaded_fluffy.init()
+	game_data_dictionary["Inactive Fluffies"].append(preloaded_fluffy)
 
 func save_game_exists(save_slot = 0):
 	var file_name = SAVE_FILE_DIRECTORY+SAVE_FILE_NAME
@@ -175,8 +181,16 @@ func load_game_data(save_slot = 0):
 			if (saved_key == "Active Fluffies"):
 				for active_fluffy in load_game_dictionary[saved_key].size():
 					new_object = load("res://fluffy.tscn").instantiate()
-					new_object.my_genome = Genome.new(load_game_dictionary[saved_key][active_fluffy]["genome"])
-					new_object.update_from_genome()
+					
+					for index in load_game_dictionary[saved_key][active_fluffy].keys():
+						if (index == "genome"):
+							new_object.my_genome = Genome.new(load_game_dictionary[saved_key][active_fluffy]["genome"])
+							new_object.update_from_genome()
+							continue
+						elif (index == "filename" or index == "parent" or index == "pos_x" or index == "pos_y" or index == "scale"):
+							continue
+						new_object.set(index, load_game_dictionary[saved_key][active_fluffy][index])
+					
 					game_data_dictionary[saved_key].append(new_object)
 				continue
 			elif (saved_key == "Inactive Fluffies"):
